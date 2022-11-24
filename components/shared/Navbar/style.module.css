@@ -1,0 +1,52 @@
+.container {
+  @apply flex items-center justify-center pt-16 lg:pt-12 text-gray-300;
+}
+
+.navDiv {
+  @apply flex items-center justify-center;
+  @apply px-5 w-[60%] h-[60px];
+  @apply border rounded-full border-gray-400/30;
+  @apply bg-gray-400/10;
+  @apply fixed top-5 z-20;
+}
+
+.desktopDiv {
+  @apply flex items-center justify-between;
+  @apply hidden lg:flex;
+  @apply w-full;
+}
+
+.navLinks {
+  @apply flex items-center gap-7;
+}
+.navLinks :nth-child(1) {
+  font-family: "Great Vibes";
+  @apply text-[1.9rem];
+}
+.navLinks a {
+  font-family: "Handlee", cursive;
+}
+.mobileContainer {
+  @apply flex items-center justify-around lg:hidden;
+  @apply w-full;
+}
+.mobileContainer p {
+  font-family: "Great Vibes";
+  @apply text-[1.9rem];
+}
+
+.mobileMenuButton {
+  @apply relative cursor-pointer;
+}
+.showMenu {
+  @apply absolute top-12 -right-12 z-10;
+  @apply flex flex-col gap-5 py-2 px-10;
+  @apply border rounded-md border-gray-400/30;
+  @apply bg-[#2a0164];
+}
+.button {
+  @apply py-[0.3rem] px-[0.6rem];
+  @apply border border-[#9A53FF]/60 rounded-full;
+  @apply hover:bg-[#9b53ff3d] transition-colors;
+  @apply hidden lg:block;
+}

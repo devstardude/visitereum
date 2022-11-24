@@ -1,0 +1,36 @@
+.container {
+  @apply pt-[5rem];
+}
+
+.InfoTab {
+  @apply flex flex-col lg:flex-row justify-between
+  gap-20 items-center text-center lg:text-left;
+  @apply py-20;
+  @apply border-b-2 border-gray-400/30 transition-colors;
+}
+.dynamicCard {
+  @apply w-[10rem] h-[10rem];
+  @apply border rounded-[10px] border-gray-400/30;
+  @apply bg-[#2a0164] overflow-hidden;
+}
+.dynamicCard img {
+  @apply object-cover w-full h-full p-0 m-0;
+}
+.InfoTab h2 {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.headingActive h2 {
+  @apply text-[#9A53FF];
+}
+
+.headingsUnactive h2 {
+  @apply text-[#9A53FF]/50;
+}
+.headingActive h6 {
+  @apply text-gray-300;
+}
+
+.headingsUnactive h6 {
+  @apply text-gray-500;
+}

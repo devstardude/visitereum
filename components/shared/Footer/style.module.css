@@ -1,0 +1,6 @@
+.container {
+  @apply flex items-center justify-center;
+  @apply mt-[4rem] px-[4rem] py-[1.5rem];
+  @apply border-t border-gray-400/30;
+  @apply bg-gray-400/10;
+}
