@@ -1,18 +1,8 @@
 import { useEffect, useState } from "react";
 import Lottie from "lottie-react";
+// import Tour from "/tour.json";
 import styles from "./style.module.css";
-const Masthead = () => {
-  const [lottie, setLottie] = useState(null);
-  useEffect(() => {
-    const getLottie = async () => {
-      const lottie = await fetch(
-        "https://assets2.lottiefiles.com/packages/lf20_ccdz2hzz.json"
-      );
-      const result = await lottie.json();
-      setLottie(result);
-    };
-    getLottie();
-  }, []);
+const Masthead = ({ result }: any) => {
   return (
     <div className={styles.container}>
       <div className={styles.heading}>
@@ -23,10 +13,20 @@ const Masthead = () => {
       </div>
 
       <div className={styles.LottieContainer}>
-        {lottie && <Lottie animationData={lottie} loop={true} />}
+        {result && <Lottie animationData={result} loop={true} />}
       </div>
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const lottie = await fetch(
+    "https://assets10.lottiefiles.com/packages/lf20_xLbDyO.json"
+  );
+  const result = await lottie.json();
+  return {
+    props: { result },
+  };
+}
 
 export default Masthead;
