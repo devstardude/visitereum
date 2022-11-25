@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import styles from "./style.module.css";
 import { motion, Variants, useInView } from "framer-motion";
 import useScrollSpy from "react-use-scrollspy";
-
+import Image from "next/image";
 interface infoTexts {
   head: string;
   subHead: string;
@@ -70,7 +70,13 @@ const InfoTab = ({ head, subHead, img, show }: InfoTabs) => {
         variants={cardVariants}
         className={styles.dynamicCard}
       >
-        <img src={img} alt="card-image" />
+        <Image
+          width={500}
+          height={500}
+          loader={() => img}
+          src="image.png"
+          alt="card-image"
+        />
       </motion.div>
     </div>
   );
