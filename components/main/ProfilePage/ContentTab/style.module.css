@@ -9,3 +9,7 @@
   @apply mx-6 lg:mx-12 pb-[2rem];
   @apply border-b border-[#9A53FF]/20;
 }
+
+.contentContainer {
+  @apply p-6 lg:p-12;
+}
