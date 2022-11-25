@@ -1,0 +1,11 @@
+.container {
+  @apply mt-[5rem] py-[2rem];
+  @apply min-h-[30rem];
+  @apply border border-[#9A53FF]/60 rounded-md;
+  @apply bg-[#9b53ff14];
+}
+.buttonContainer {
+  @apply flex justify-center gap-10;
+  @apply mx-6 lg:mx-12 pb-[2rem];
+  @apply border-b border-[#9A53FF]/20;
+}

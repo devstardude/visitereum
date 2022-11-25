@@ -1,5 +1,5 @@
 .container {
-  @apply pt-[5rem];
+  @apply lg:pt-[5rem];
 }
 
 .InfoTab {

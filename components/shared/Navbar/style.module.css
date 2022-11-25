@@ -1,5 +1,5 @@
 .container {
-  @apply flex items-center justify-center pt-16 lg:pt-12 text-gray-300;
+  @apply flex items-center justify-center text-gray-300;
 }
 
 .navDiv {
@@ -31,7 +31,7 @@
   @apply w-full;
 }
 .mobileContainer p {
-  font-family: "Great Vibes";
+  font-family: "Great Vibes",cursive;
   @apply text-[1.9rem];
 }
 

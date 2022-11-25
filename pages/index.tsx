@@ -11,7 +11,7 @@ export default function Home() {
         <meta name="description" content="Track visited places on Blockchain" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="prose sm:prose-md lg:prose-xl dark:prose-invert max-w-none">
+      <div>
         <Homepage />
       </div>
     </div>

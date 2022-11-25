@@ -1,0 +1,3 @@
+.container {
+  @apply px-[2rem] lg:px-[6rem] pt-[10rem];
+}

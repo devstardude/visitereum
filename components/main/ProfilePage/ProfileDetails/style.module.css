@@ -1,0 +1,30 @@
+.container {
+  @apply flex flex-col lg:flex-row justify-center items-center lg:items-start lg:justify-start gap-6;
+  font-family: ;
+}
+.image {
+  @apply flex  w-[15rem] h-[15rem];
+  @apply border rounded-[10px] border-gray-400/30;
+  @apply bg-[#2a0164d3] overflow-hidden;
+}
+
+.image img {
+  @apply object-cover w-full h-full p-0 m-0;
+}
+
+.details {
+  @apply flex flex-col gap-2;
+}
+.details h1 {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  @apply m-0 pb-2 text-center lg:text-left font-semibold;
+}
+.details p {
+  @apply m-0 p-0 text-center lg:text-left;
+}
+.extraDetailsDiv {
+  @apply flex flex-col lg:flex-row items-center lg:justify-start lg:gap-6;
+}
+.extraDetails {
+  @apply flex items-center lg:justify-start gap-2;
+}

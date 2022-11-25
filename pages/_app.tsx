@@ -7,8 +7,10 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Navbar />
-      <Component {...pageProps} />
-      <Footer/>
+      <div className="prose sm:prose-md lg:prose-xl dark:prose-invert max-w-none">
+        <Component {...pageProps} />
+      </div>
+      <Footer />
     </>
   );
 }
