@@ -21,7 +21,6 @@ interface Props {
 
 const Visited = ({ data }: Props) => {
   const [places, setPlaces] = useState(data);
-  const [filteredPlace, setFilteredPlaces] = useState(data);
   const [filterTag, setFilterTag] = useState(filters);
   const [customFilter, setCustomFilter] = useState<string[]>([]);
   const addFilterHandler = (_name: string) => {
@@ -36,23 +35,11 @@ const Visited = ({ data }: Props) => {
   useEffect(() => {
     if (customFilter.length === 0) {
       setFilterTag(filters);
-      setFilteredPlaces(places);
     } else {
       setFilterTag(customFilter);
-      setFilteredPlaces((prev) => {
-        let filtered: any = [];
-        customFilter.forEach((filter) => {
-          places.forEach((item) => {
-            if (item.type.includes(filter)) {
-              filtered.push(item);
-            }
-          });
-        });
-        return filtered;
-      });
     }
   }, [customFilter]);
-  console.log("filtered", filteredPlace);
+  
   return (
     <div className={styles.container}>
       <div className={styles.filterDiv}>
@@ -76,12 +63,11 @@ const Visited = ({ data }: Props) => {
                 {filter}
               </h2>
             </div>
-            {filteredPlace.filter((item) => item.type === filter).length ===
-            0 ? (
+            {places.filter((item) => item.type === filter).length === 0 ? (
               <p>No {filter} place added yet</p>
             ) : (
               <div className={styles.cardContainer}>
-                {filteredPlace
+                {places
                   .filter((item) => item.type === filter)
                   .map((place, idx) => (
                     <Card
