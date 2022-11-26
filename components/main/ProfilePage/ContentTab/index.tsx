@@ -8,11 +8,19 @@ import { VisitedArray } from "./type";
 const visitedPlaces: VisitedArray = [
   {
     id: "01",
-    address: "Urab",
+    address: "Urban",
     description: "Had fun there",
     lattitude: "10000",
     longitude: "10000",
-    type: 0,
+    type: "Urbaan",
+  },
+  {
+    id: "01",
+    address: "Urban 2",
+    description: "Had fun there",
+    lattitude: "10000",
+    longitude: "10000",
+    type: "Urbaan",
   },
   {
     id: "02",
@@ -20,7 +28,15 @@ const visitedPlaces: VisitedArray = [
     description: "Had fun there",
     lattitude: "10000",
     longitude: "10000",
-    type: 1,
+    type: "Nature",
+  },
+  {
+    id: "02",
+    address: "Nature 2",
+    description: "Had fun there",
+    lattitude: "10000",
+    longitude: "10000",
+    type: "Nature",
   },
   {
     id: "02",
@@ -28,7 +44,15 @@ const visitedPlaces: VisitedArray = [
     description: "Had fun there",
     lattitude: "10000",
     longitude: "10000",
-    type: 1,
+    type: "Sea",
+  },
+  {
+    id: "02",
+    address: "Sea 2",
+    description: "Had fun there",
+    lattitude: "10000",
+    longitude: "10000",
+    type: "Sea",
   },
   {
     id: "02",
@@ -36,7 +60,15 @@ const visitedPlaces: VisitedArray = [
     description: "Had fun there",
     lattitude: "10000",
     longitude: "10000",
-    type: 1,
+    type: "Others",
+  },
+  {
+    id: "02",
+    address: "Others 2",
+    description: "Had fun there",
+    lattitude: "10000",
+    longitude: "10000",
+    type: "Others",
   },
 ];
 const ContentTab = () => {

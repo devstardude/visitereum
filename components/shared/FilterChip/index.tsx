@@ -4,14 +4,17 @@ interface FilterChip {
   chipName: string;
   active?: boolean;
   clicked?: () => void;
+  count: number;
 }
-const FilterChip = ({ chipName, active, clicked }: FilterChip) => {
+const FilterChip = ({ chipName, active, clicked, count }: FilterChip) => {
   return (
     <div
       onClick={clicked}
       className={`${styles.container} ${active && styles.active}`}
     >
       {chipName}
+      <span>({count})</span>
+
       <BsCheck2Circle />
     </div>
   );

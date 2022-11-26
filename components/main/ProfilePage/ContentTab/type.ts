@@ -4,7 +4,7 @@ export type VisitedArray = {
   description: string;
   lattitude: string;
   longitude: string;
-  type:number
+  type:string
 }[];
 
 export interface Filter {

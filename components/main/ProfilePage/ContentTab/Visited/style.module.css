@@ -2,7 +2,26 @@
   @apply flex justify-center flex-wrap gap-4;
 }
 
+.filterDiv p {
+  @apply p-0 m-0 underline underline-offset-8;
+}
+
+.placesContainer p{
+    @apply text-center;
+}
+
+.placeHeading {
+  @apply flex justify-center;
+}
+.placeHeading h2 {
+  font-family: "Great Vibes", cursive;
+  @apply flex justify-center items-center gap-5;
+  @apply px-6 py-2;
+  @apply border-2 border-gray-400/60 rounded-full;
+  @apply font-thin;
+}
+
 .cardContainer {
-  @apply mt-[4rem];
+  @apply mt-[2rem];
   @apply flex justify-center flex-wrap gap-10 lg:gap-20;
 }

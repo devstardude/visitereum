@@ -11,6 +11,7 @@ body {
   font-family: "Handlee", cursive;
   background-color: #10041c;
   color: rgb(227, 227, 227);
+  -webkit-tap-highlight-color: transparent;
 }
 
 a {
