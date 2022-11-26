@@ -1,7 +1,7 @@
 import styles from "./style.module.css";
 const Footer = () => {
   return (
-    <div className={styles.container}>Build with React and Blockchain</div>
+    <div className={styles.container}>Build with Next.js and Blockchain</div>
   );
 };
 

@@ -1,0 +1,8 @@
+.filterDiv {
+  @apply flex justify-center flex-wrap gap-4;
+}
+
+.cardContainer {
+  @apply mt-[4rem];
+  @apply flex justify-center flex-wrap gap-10 lg:gap-20;
+}

@@ -1,0 +1,10 @@
+.container {
+  @apply flex items-center gap-2 py-[0.1rem] px-[0.5rem] lg:px-[2rem];
+  @apply border border-red-500/40 rounded-full;
+  @apply bg-red-500/10 hover:bg-red-500/30 transition-colors cursor-pointer;
+}
+
+.active {
+  @apply bg-green-500/10 hover:bg-green-500/30;
+  @apply border-green-500/70;
+}
