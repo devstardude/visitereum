@@ -6,6 +6,7 @@ import { BiLocationPlus } from "react-icons/bi";
 import { FaBirthdayCake } from "react-icons/fa";
 import Button from "../../../shared/Button";
 import ModalWrapper from "../../../shared/ModalWrapper";
+import AddPlaceForm from "./AddPlaceForm";
 const ProfileDetails = () => {
   const img = "https://newsroompost.com/wp-content/uploads/2021/09/NFT.png";
   return (
@@ -37,10 +38,9 @@ const ProfileDetails = () => {
           </div>
         </div>
         <div className={styles.addDetailsContainer}>
-          <ModalWrapper
-            icon={<BiLocationPlus size={28} />}
-            text={"Add Place"}
-          />
+          <ModalWrapper icon={<BiLocationPlus size={28} />} text={"Add Place"}>
+            <AddPlaceForm />
+          </ModalWrapper>
         </div>
       </div>
     </div>

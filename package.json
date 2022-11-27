@@ -18,6 +18,7 @@
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.4",
     "ethers": "^5.7.2",
+    "formik": "^2.2.9",
     "framer-motion": "^7.6.10",
     "lottie-react": "^2.3.1",
     "next": "^13.0.5",

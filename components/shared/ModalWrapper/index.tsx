@@ -2,14 +2,15 @@ import { useState } from "react";
 import Modal from "react-modal";
 import Button from "../Button";
 import styles from "./style.module.css";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
-
-interface ModalWrapper{
-  icon?:React.ReactNode;
-  text:string
+interface ModalWrapper {
+  icon?: React.ReactNode;
+  text: string;
+  children: React.ReactNode;
 }
-const ModalWrapper = ({ icon,text }:ModalWrapper) => {
-  const [modalIsOpen, setIsOpen] = useState(false);
+const ModalWrapper = ({ icon, text, children }: ModalWrapper) => {
+  const [modalIsOpen, setIsOpen] = useState(true);
   const openModal = () => {
     setIsOpen(true);
   };
@@ -30,8 +31,12 @@ const ModalWrapper = ({ icon,text }:ModalWrapper) => {
         onRequestClose={closeModal}
         contentLabel="Modal"
       >
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
+        <div className={styles.closeButton} onClick={closeModal}>
+          <AiOutlineCloseCircle className="cursor-pointer" size={34} />
+        </div>
+        <div className="prose sm:prose-md lg:prose-xl dark:prose-invert max-w-none">
+          {children}
+        </div>
       </Modal>
     </div>
   );
