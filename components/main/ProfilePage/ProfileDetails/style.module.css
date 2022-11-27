@@ -30,5 +30,5 @@
 }
 
 .addDetailsContainer{
-  @apply flex justify-center lg:justify-start pt-3
+  @apply flex justify-center lg:justify-start pt-3 gap-4
 }

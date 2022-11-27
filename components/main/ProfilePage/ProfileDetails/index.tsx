@@ -4,11 +4,14 @@ import { BsGenderAmbiguous } from "react-icons/bs";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BiLocationPlus } from "react-icons/bi";
 import { FaBirthdayCake } from "react-icons/fa";
-import Button from "../../../shared/Button";
+import { AiOutlineEdit } from "react-icons/ai";
 import ModalWrapper from "../../../shared/ModalWrapper";
 import AddPlaceForm from "./AddPlaceForm";
-const ProfileDetails = () => {
-  const img = "https://newsroompost.com/wp-content/uploads/2021/09/NFT.png";
+import { Profile } from "../types";
+import EditProfile from "./EditProfile";
+
+const ProfileDetails = ({ profile }: Profile) => {
+  const { name, bio, address, birthday, image, gender } = profile;
   return (
     <div className={styles.container}>
       <div className={styles.image}>
@@ -16,30 +19,36 @@ const ProfileDetails = () => {
           width={500}
           height={500}
           src="me.png"
-          loader={() => img}
+          loader={() => image}
           alt="me.png"
         />
       </div>
       <div className={styles.details}>
-        <h1>Arun shekhar</h1>
-        <p>Hello I'm Arun I love to travel</p>
+        <h1>{name}</h1>
+        <p>{bio}</p>
         <div className={styles.extraDetailsDiv}>
           <div className={styles.extraDetails}>
             <FaBirthdayCake />
-            <p>20-10-1999</p>
+            <p>{birthday}</p>
           </div>
           <div className={styles.extraDetails}>
             <BsGenderAmbiguous />
-            <p>Male</p>
+            <p>{gender}</p>
           </div>
           <div className={styles.extraDetails}>
             <HiOutlineLocationMarker />
-            <p>Hno-346/216 India</p>
+            <p>{address}</p>
           </div>
         </div>
         <div className={styles.addDetailsContainer}>
           <ModalWrapper icon={<BiLocationPlus size={28} />} text={"Add Place"}>
             <AddPlaceForm />
+          </ModalWrapper>
+          <ModalWrapper
+            icon={<AiOutlineEdit size={28} />}
+            text={"Edit profile"}
+          >
+            <EditProfile />
           </ModalWrapper>
         </div>
       </div>

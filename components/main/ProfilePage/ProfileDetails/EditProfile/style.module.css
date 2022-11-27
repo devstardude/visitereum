@@ -1,0 +1,56 @@
+.container {
+  @apply flex flex-col justify-center items-center;
+}
+
+.container h3 {
+  font-family: "Plus Jakarta Sans";
+  @apply p-0 m-0 underline underline-offset-8;
+}
+
+.submitButtonDiv {
+  @apply flex justify-center mt-5;
+}
+.submitButtonDiv button {
+  @apply py-[0.3rem] px-[0.6rem] lg:px-[2rem];
+  @apply border border-[#9A53FF]/60 rounded-full;
+  @apply hover:bg-[#9b53ff3d] transition-colors cursor-pointer;
+}
+
+.formDiv {
+  @apply overflow-y-auto px-6;
+  @apply w-[80%] h-[25rem];
+  @apply mt-[2rem] pb-4;
+}
+.formDiv::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.formDiv::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+.formDiv::-webkit-scrollbar-thumb {
+  background: #e1e1e1;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+.formDiv::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+.formDiv::-webkit-scrollbar-thumb:active {
+  background: #a6a6a6;
+}
+.formDiv::-webkit-scrollbar-track {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+.formDiv::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+.formDiv::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+.formDiv::-webkit-scrollbar-corner {
+  background: transparent;
+}

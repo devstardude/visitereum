@@ -10,7 +10,7 @@ interface ModalWrapper {
   children: React.ReactNode;
 }
 const ModalWrapper = ({ icon, text, children }: ModalWrapper) => {
-  const [modalIsOpen, setIsOpen] = useState(true);
+  const [modalIsOpen, setIsOpen] = useState(false);
   const openModal = () => {
     setIsOpen(true);
   };
