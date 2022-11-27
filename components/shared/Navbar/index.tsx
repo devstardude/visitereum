@@ -3,10 +3,17 @@ import Link from "next/link";
 import styles from "./style.module.css";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
+import truncateEthAddress from "truncate-eth-address";
+import { useAddress, useMetamask } from "@thirdweb-dev/react";
+import { useNetworkMismatch } from "@thirdweb-dev/react";
 const Navbar = () => {
+  const connectWithMetamask = useMetamask();
+  const address = useAddress();
+  const isMismatched = useNetworkMismatch();
   const [show, setShow] = useState(false);
   return (
     <div className={styles.container}>
+      {isMismatched && <p className={styles.testNet}>please connect to polygon mumbai testnet</p>}
       <div className={styles.navDiv}>
         {/* Desktop  */}
         <div className={styles.desktopDiv}>
@@ -18,8 +25,12 @@ const Navbar = () => {
             <Link href="/about">About</Link>
           </div>
           <div>
-            <button className={styles.button}>
-              <span>Connect wallet</span>
+            <button onClick={connectWithMetamask} className={styles.button}>
+              {address ? (
+                <span>{truncateEthAddress(address)}</span>
+              ) : (
+                <span>Connect wallet</span>
+              )}
             </button>
           </div>
         </div>
