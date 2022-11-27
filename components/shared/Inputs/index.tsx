@@ -1,10 +1,10 @@
-import { useField, Field, ErrorMessage } from "formik";
-
+import { Field, ErrorMessage } from "formik";
+import styles from "./style.module.css";
 interface CustomInput {
   name: string;
   placeholder: string;
-  disabled: boolean;
-  textarea: string;
+  disabled?: boolean;
+  textarea?: boolean;
 }
 export const CustomInput = ({
   name,
@@ -13,8 +13,8 @@ export const CustomInput = ({
   textarea,
 }: CustomInput) => {
   return (
-    <div className="mb-4">
-      <label className="block TextMod text-sm font-bold mb-2" htmlFor={name}>
+    <div className={styles.container}>
+      <label className={styles.label} htmlFor={name}>
         {placeholder}
       </label>
       <Field
@@ -22,12 +22,48 @@ export const CustomInput = ({
         component={`${textarea ? "textarea" : "input"}`}
         rows="3"
         name={name}
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        className={styles.field}
         id={name}
         type="text"
         placeholder={placeholder}
       />
-      <ErrorMessage className="text-red-800 text-xs italic" name={name} />
+      <span className={styles.error}>
+        <ErrorMessage name={name} />
+      </span>
+    </div>
+  );
+};
+
+export const CustomSelectInput = ({
+  name,
+  placeholder,
+  disabled,
+  textarea,
+}: CustomInput) => {
+  return (
+    <div className={styles.container}>
+      <label className={styles.label} htmlFor={name}>
+        {placeholder}
+      </label>
+      <Field
+        as="select"
+        disabled={disabled}
+        rows="3"
+        name={name}
+        className={styles.field}
+        id={name}
+        placeholder={placeholder}
+      >
+        <option value="Urban">
+          Urban
+        </option>
+        <option value="Nature">Nature</option>
+        <option value="Sea">Sea</option>
+        <option value="Others">Others</option>
+      </Field>
+      <span className={styles.error}>
+        <ErrorMessage name={name} />
+      </span>
     </div>
   );
 };

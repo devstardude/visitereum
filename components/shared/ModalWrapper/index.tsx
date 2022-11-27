@@ -25,6 +25,7 @@ const ModalWrapper = ({ icon, text, children }: ModalWrapper) => {
         {text}
       </Button>
       <Modal
+        ariaHideApp={false}
         className={styles.modelContainer}
         overlayClassName={styles.overlay}
         isOpen={modalIsOpen}
