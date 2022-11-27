@@ -1,0 +1,10 @@
+.modelContainer {
+  @apply border border-[#9A53FF]/60 rounded-lg overflow-hidden;
+  @apply absolute inset-0 m-auto;
+  @apply bg-[#10041C];
+  @apply w-[90%] lg:w-[70%] h-[70%];
+}
+
+.overlay {
+  @apply fixed inset-0 bg-gray-900/50;
+}

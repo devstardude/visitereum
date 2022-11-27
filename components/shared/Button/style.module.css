@@ -2,6 +2,7 @@
   @apply py-[0.3rem] px-[0.6rem] lg:px-[2rem];
   @apply border border-[#9A53FF]/60 rounded-full;
   @apply hover:bg-[#9b53ff3d] transition-colors cursor-pointer;
+  @apply flex items-center justify-center gap-2;
 }
 
 .active {

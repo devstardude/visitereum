@@ -28,3 +28,7 @@
 .extraDetails {
   @apply flex items-center lg:justify-start gap-2;
 }
+
+.addDetailsContainer{
+  @apply flex justify-center lg:justify-start pt-3
+}

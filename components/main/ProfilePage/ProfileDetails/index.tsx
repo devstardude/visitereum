@@ -2,7 +2,10 @@ import Image from "next/image";
 import styles from "./style.module.css";
 import { BsGenderAmbiguous } from "react-icons/bs";
 import { HiOutlineLocationMarker } from "react-icons/hi";
+import { BiLocationPlus } from "react-icons/bi";
 import { FaBirthdayCake } from "react-icons/fa";
+import Button from "../../../shared/Button";
+import ModalWrapper from "../../../shared/ModalWrapper";
 const ProfileDetails = () => {
   const img = "https://newsroompost.com/wp-content/uploads/2021/09/NFT.png";
   return (
@@ -32,6 +35,12 @@ const ProfileDetails = () => {
             <HiOutlineLocationMarker />
             <p>Hno-346/216 India</p>
           </div>
+        </div>
+        <div className={styles.addDetailsContainer}>
+          <ModalWrapper
+            icon={<BiLocationPlus size={28} />}
+            text={"Add Place"}
+          />
         </div>
       </div>
     </div>

@@ -12,7 +12,7 @@ const visitedPlaces: VisitedArray = [
     description: "Had fun there",
     lattitude: "10000",
     longitude: "10000",
-    type: "Urbaan",
+    type: "Urban",
   },
   {
     id: "01",
@@ -20,7 +20,7 @@ const visitedPlaces: VisitedArray = [
     description: "Had fun there",
     lattitude: "10000",
     longitude: "10000",
-    type: "Urbaan",
+    type: "Urban",
   },
   {
     id: "02",
@@ -60,7 +60,7 @@ const visitedPlaces: VisitedArray = [
     description: "Had fun there",
     lattitude: "10000",
     longitude: "10000",
-    type: "Others",
+    type: "Otherss",
   },
   {
     id: "02",
@@ -68,7 +68,7 @@ const visitedPlaces: VisitedArray = [
     description: "Had fun there",
     lattitude: "10000",
     longitude: "10000",
-    type: "Others",
+    type: "Otherss",
   },
 ];
 const ContentTab = () => {
