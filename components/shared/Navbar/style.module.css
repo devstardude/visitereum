@@ -3,7 +3,7 @@
 }
 
 .testNet {
-  @apply absolute inset-y-0 top-[6rem] underline underline-offset-8 text-red-500/80;
+  @apply absolute inset-y-0 top-[6rem] underline underline-offset-8 text-red-500/80 h-2;
 }
 
 .navDiv {

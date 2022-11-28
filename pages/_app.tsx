@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import Navbar from "../components/shared/Navbar";
 import Footer from "../components/shared/Footer";
 import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
-const activeChainId = ChainId.Mumbai;
+const activeChainId = ChainId.Mumbai || ChainId.Mainnet;
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
