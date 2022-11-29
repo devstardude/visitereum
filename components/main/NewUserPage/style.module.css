@@ -1,0 +1,23 @@
+.container {
+  @apply px-[2rem] lg:px-[10rem] pt-[10rem] min-h-screen;
+}
+
+.container h3 {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  @apply mt-0 p-0 text-center font-semibold;
+}
+.container h3 span {
+  @apply text-[#9A53FF];
+}
+.container p {
+  @apply text-center;
+}
+
+.buttonContainer {
+  @apply flex items-center justify-center;
+}
+
+.formDiv {
+  @apply overflow-y-auto px-6;
+  @apply mt-[2rem] pb-4;
+}

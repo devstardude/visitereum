@@ -1,9 +1,10 @@
-const New = ()=>{
-    return(
-    <div>
-        
-    </div>
-);
+import NewUserPage from "../../components/main/NewUserPage";
+const New = () => {
+  return (
+    <>
+      <NewUserPage />
+    </>
+  );
 };
 
-export default New ;
+export default New;

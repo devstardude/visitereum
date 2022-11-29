@@ -1,6 +1,6 @@
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import { CustomInput } from "../Inputs";
+import { CustomInput, CustomInputDate, CustomInputImage } from "../Inputs";
 import styles from "./style.module.css";
 
 interface userData {
@@ -9,7 +9,7 @@ interface userData {
   birthday?: string;
   gender?: string;
   address?: string;
-  image?: string;
+  image?: any;
 }
 
 interface UserProfileDataSet {
@@ -34,7 +34,7 @@ const UserProfileDataSet = ({ userData, submitData }: UserProfileDataSet) => {
           birthday: birthday ? birthday : "",
           gender: gender ? gender : "",
           address: address ? address : "",
-          image: image ? image : "",
+          image: image ? image : null,
         }}
         validationSchema={Yup.object({
           name: Yup.string().required("Required"),
@@ -42,7 +42,7 @@ const UserProfileDataSet = ({ userData, submitData }: UserProfileDataSet) => {
             .min(4, "Must be 4 characters or more")
             .max(100, "Must be 100 characters or less")
             .required("Required"),
-          birthday: Yup.string().required("Required"),
+          birthday: Yup.date().required("Required"),
           gender: Yup.string().required("Required"),
           image: Yup.string().required("Required"),
         })}
@@ -52,10 +52,16 @@ const UserProfileDataSet = ({ userData, submitData }: UserProfileDataSet) => {
           <Form>
             <CustomInput name="name" placeholder="Name" />
             <CustomInput name="bio" placeholder="Bio" textarea />
-            <CustomInput name="birthday" placeholder="Birthday" />
+            <CustomInputDate name="birthday" placeholder="Birthday" />
             <CustomInput name="gender" placeholder="Gender" />
             <CustomInput name="address" placeholder="Address" />
-            <CustomInput name="image" placeholder="Add image" />
+            <CustomInputImage
+              setValue={(file) => {
+                setFieldValue("image", file);
+              }}
+              name="image"
+              placeholder="Add image"
+            />
             <div className={styles.submitButtonDiv}>
               <button type="submit">Submit</button>
             </div>

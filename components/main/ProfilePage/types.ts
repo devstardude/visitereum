@@ -5,6 +5,15 @@ export interface Profile {
     birthday: string;
     gender: string;
     address: string;
-    image:string
+    image: any;
   };
+}
+
+export interface userData {
+  name?: string;
+  bio?: string;
+  birthday?: string;
+  gender?: string;
+  address?: string;
+  image?: any;
 }
