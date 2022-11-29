@@ -11,20 +11,30 @@ import {
   ChainId,
   useNetworkMismatch,
 } from "@thirdweb-dev/react";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
+  const authContext = useAuth();
+  const { did, setDid } = authContext;
+
   const connectWithMetamask = useMetamask();
   const address = useAddress();
   const isMismatched = useNetworkMismatch();
   const [, switchNetwork] = useNetwork();
   const [show, setShow] = useState(false);
-  // useEffect(() => {
-  //   // Check if the user is connected to the wrong network
-  //   if (isMismatched) {
-  //     // Prompt their wallet to switch networks
-  //     switchNetwork?.(ChainId.Mumbai); // the chain you want here
-  //   }
-  // }, [address]);
+  useEffect(() => {
+    // Check if the user is connected to the wrong network
+    if (isMismatched) {
+      // Prompt their wallet to switch networks
+      switchNetwork?.(ChainId.Mumbai); // the chain you want here
+    }
+    if (address) {
+      // check if did exists
+      // if exists, user route is set to profile, set DID value
+      // if not exists, set user route to new user, did still null, set did from new user page
+    }
+    if (!address) setDid(null);
+  }, [address]);
   return (
     <div className={styles.container}>
       {isMismatched && (
