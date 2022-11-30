@@ -1,5 +1,5 @@
 .container {
-  @apply px-[2rem] lg:px-[10rem] pt-[10rem] min-h-screen;
+  @apply mx-[2rem] lg:px-[10rem] pt-[10rem] min-h-screen;
 }
 
 .container h3 {
