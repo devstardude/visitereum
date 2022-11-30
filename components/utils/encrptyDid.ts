@@ -1,0 +1,9 @@
+import CryptoJS from "crypto-js";
+
+export const encryptedDid = (did: string): string => {
+  const ciphertext = CryptoJS.AES.encrypt(
+    did,
+    process.env.NEXT_PUBLIC_SECRET_TOKEN
+  ).toString();
+  return ciphertext;
+};

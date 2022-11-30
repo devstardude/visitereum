@@ -8,6 +8,7 @@ import Button from "../../shared/Button";
 import { readProfile } from "../../utils/readProfile";
 import { writeProfile } from "../../utils/writeProfie";
 import { storeImage } from "../../utils/storeImage";
+import { storeJsonIpfs } from "../../utils/storeJsonIpfs";
 const NewUserPage = () => {
   const address = useAddress();
   const [profile, setProfile] = useState<any>(null);
@@ -23,10 +24,14 @@ const NewUserPage = () => {
   };
 
   const setProfileData = async (data: userData) => {
-    const imageUrl = await storeImage(data.image, data.image.name);
-    data.image = imageUrl;
+    if (data.image) {
+      const imageUrl = await storeImage(data.image, data.image.name);
+      data.image = imageUrl;
+    }
     if (address) {
       await writeProfile(address, data);
+      // const cid = await storeJsonIpfs(profileDid);
+      // console.log("cid", cid);
     }
   };
   return (

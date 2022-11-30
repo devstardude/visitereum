@@ -18,6 +18,7 @@ import {
   address as contractAddress,
   vistereumABI,
 } from "../../../contract/abi/visitereum";
+import { loggedInLinks, loggedOffLinks } from "./links";
 
 const Navbar = () => {
   const address = useAddress();
@@ -29,7 +30,7 @@ const Navbar = () => {
   } = useContract(contractAddress, vistereumABI);
 
   const {
-    data: isUser,
+    data: userExist,
     isLoading,
     error,
   } = useContractRead(contract, "isUser", address);
@@ -47,13 +48,11 @@ const Navbar = () => {
       switchNetwork?.(ChainId.Mumbai); // the chain you want here
     }
     if (address) {
-      // check if did exists
-      // if exists, user route is set to profile, set DID value
-      // if not exists, set user route to new user, did still null, set did from new user page
-      console.log("is user ", isUser);
+      // if (!userExist(address)) {
+      // }
     }
     if (!address) setDid(null);
-  }, [address]);
+  }, [address, userExist]);
   return (
     <div className={styles.container}>
       {isMismatched && (
@@ -66,11 +65,23 @@ const Navbar = () => {
         <div className={styles.desktopDiv}>
           <div className={styles.navLinks}>
             <Link href="/">Visitéreum</Link>
-            <Link href="/">Home</Link>
-            <Link href="/users">Users</Link>
-            <Link href="/profile">Profile</Link>
-            <Link href="/new">New</Link>
-            <Link href="/about">About</Link>
+            {address &&
+              loggedInLinks.map((link, idx) => (
+                <Link
+                  key={idx}
+                  href={
+                    link?.altLink && did === null ? link.altLink : link.link
+                  }
+                >
+                  {link.title}
+                </Link>
+              ))}
+            {!address &&
+              loggedOffLinks.map((link, idx) => (
+                <Link key={idx} href={link.link}>
+                  {link.title}
+                </Link>
+              ))}
           </div>
           <div>
             <button onClick={connectWithMetamask} className={styles.button}>

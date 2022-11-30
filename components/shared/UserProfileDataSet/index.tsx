@@ -32,7 +32,7 @@ const UserProfileDataSet = ({ userData, submitData }: UserProfileDataSet) => {
           birthDate: bdate,
           gender: gender ? gender : "",
           homeLocation: homeLocation ? homeLocation : "",
-          image: image ? image : null,
+          image: null,
         }}
         validationSchema={Yup.object({
           name: Yup.string().required("Required"),
@@ -42,7 +42,6 @@ const UserProfileDataSet = ({ userData, submitData }: UserProfileDataSet) => {
             .required("Required"),
           birthDate: Yup.date().required("Required"),
           gender: Yup.string().required("Required"),
-          image: Yup.string().required("Required"),
         })}
         onSubmit={dataSubmitHandler}
       >
@@ -59,7 +58,7 @@ const UserProfileDataSet = ({ userData, submitData }: UserProfileDataSet) => {
               }}
               initialImage={initialImage}
               name="image"
-              placeholder="Add image"
+              placeholder="Profile picture (optional)"
             />
             <div className={styles.submitButtonDiv}>
               <button type="submit">Submit</button>

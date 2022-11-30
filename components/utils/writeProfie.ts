@@ -7,23 +7,31 @@ export const writeProfile = async (address: string, data: userData) => {
   const authProvider = new EthereumAuthProvider(window.ethereum, address);
   await client.authenticate(authProvider);
   const self = new SelfID({ client });
-
-  const imageSources = {
-    original: {
-      src: data.image,
-      mimeType: "image/*",
-      width: 400,
-      height: 400,
-    },
-  };
-  const ids = await self.set("basicProfile", {
+  if (data.image) {
+    const imageSources = {
+      original: {
+        src: data.image,
+        mimeType: "image/*",
+        width: 400,
+        height: 400,
+      },
+    };
+    await self.set("basicProfile", {
+      name: data.name,
+      image: imageSources,
+      description: data.description,
+      birthDate: data.birthDate,
+      gender: data.gender,
+      homeLocation: data.homeLocation,
+    });
+    return self.id;
+  }
+  await self.set("basicProfile", {
     name: data.name,
-    image: imageSources,
     description: data.description,
     birthDate: data.birthDate,
     gender: data.gender,
     homeLocation: data.homeLocation,
   });
-  console.log(ids);
-  return ids;
+  return self.id;
 };
