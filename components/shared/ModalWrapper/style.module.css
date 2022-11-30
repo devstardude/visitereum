@@ -6,7 +6,7 @@
 }
 
 .overlay {
-  @apply fixed inset-0 bg-gray-900/50 z-30;
+  @apply fixed inset-0 bg-gray-900/50 z-30 overflow-y-hidden;
 }
 .closeButton {
   @apply flex justify-end p-2;

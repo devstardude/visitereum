@@ -10,6 +10,7 @@ import {
 import ProfilePage from "../../components/main/ProfilePage";
 import LoadingScreen from "../../components/shared/LoadingScreen";
 import Router from "next/router";
+import { useAuth } from "../../components/shared/context/AuthContext";
 
 const Profile = () => {
   const [loadingScreen, setLoadingScreen] = useState(false);
@@ -19,6 +20,10 @@ const Profile = () => {
 
   // wallet address
   const { address } = router.query;
+
+  //context states
+  const authContext = useAuth();
+  const { setUserDid } = authContext;
 
   // Hook for connecting to contract
   const {
@@ -41,6 +46,7 @@ const Profile = () => {
     const findDid = async () => {
       try {
         const userDid = await fetchJsonIpfs(cid);
+        setUserDid(userDid);
         setDid(userDid);
       } catch (e) {
         console.log(e);
@@ -59,7 +65,7 @@ const Profile = () => {
 
       <div className="min-h-screen">
         {!did && <LoadingScreen show={loadingScreen} />}
-        {did && <ProfilePage did={did}  />}
+        {did && <ProfilePage did={did} />}
       </div>
     </>
   );

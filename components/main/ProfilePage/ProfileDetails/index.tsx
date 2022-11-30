@@ -6,11 +6,10 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BiLocationPlus } from "react-icons/bi";
 import { FaBirthdayCake } from "react-icons/fa";
 import { AiOutlineEdit } from "react-icons/ai";
-import ModalWrapper from "../../../shared/ModalWrapper";
-import AddPlaceForm from "./AddPlaceForm";
-import {  userData } from "../types";
-import EditProfile from "./EditProfile";
+import { userData } from "../types";
 import { filePreviewLink } from "../../../utils/filePreviewLink";
+import Button from "../../../shared/Button";
+import Link from "next/link";
 interface ProfileDetails {
   profile: userData;
 }
@@ -18,13 +17,6 @@ const ProfileDetails = ({ profile }: ProfileDetails) => {
   const [profileData, setProfileData] = useState(profile);
   const { name, description, homeLocation, birthDate, image, gender } =
     profileData;
-
-  const editedHandler = (data: userData) => {
-    setProfileData((prev) => {
-      console.log(prev.image);
-      return { ...data,image: prev.image };
-    });
-  };
 
   const dummy = "https://newsroompost.com/wp-content/uploads/2021/09/NFT.png";
   return (
@@ -56,15 +48,12 @@ const ProfileDetails = ({ profile }: ProfileDetails) => {
           </div>
         </div>
         <div className={styles.addDetailsContainer}>
-          <ModalWrapper icon={<BiLocationPlus size={28} />} text={"Add Place"}>
-            <AddPlaceForm />
-          </ModalWrapper>
-          <ModalWrapper
-            icon={<AiOutlineEdit size={28} />}
-            text={"Edit profile"}
-          >
-            <EditProfile profile={profile} edited={editedHandler} />
-          </ModalWrapper>
+          <Link href="/add">
+            <Button icon={<BiLocationPlus size={24} />}>Add place</Button>
+          </Link>
+          <Link href="/edit">
+            <Button icon={<AiOutlineEdit size={24} />}>Edit profile</Button>
+          </Link>
         </div>
       </div>
     </div>

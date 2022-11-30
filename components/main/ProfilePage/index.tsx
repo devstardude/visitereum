@@ -13,10 +13,6 @@ const ProfilePage = ({ did }: ProfilePage) => {
     "basicProfile",
     did
   );
-  const record = useViewerRecord("basicProfile");
-  useEffect(() => {
-    console.log(record.content?.name);
-  }, [content]);
 
   return (
     <div className={styles.container}>

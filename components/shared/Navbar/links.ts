@@ -7,6 +7,6 @@ export const loggedOffLinks = [
 export const loggedInLinks = [
   { title: "Home", link: "/" },
   { title: "Users", link: "/users" },
-  { title: "Profile", link: "/profile", altLink: "/new" },
+  { title: "Profile", link: "/profile", altLink: "/edit" },
   { title: "About", link: "/about" },
 ];

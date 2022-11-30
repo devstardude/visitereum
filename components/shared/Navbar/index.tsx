@@ -24,7 +24,9 @@ import { fetchJsonIpfs } from "../../utils/fetchJsonIpfs";
 const Navbar = () => {
   const address = useAddress();
   const authContext = useAuth();
-  const { did, setDid } = authContext;
+
+  // context states
+  const { userExist, setUserExist, setUserDid } = authContext;
   const {
     contract,
     isLoading: stateLoading,
@@ -32,16 +34,10 @@ const Navbar = () => {
   } = useContract(contractAddress, vistereumABI);
 
   const {
-    data: userExist,
+    data: isUser,
     isLoading,
     error,
   } = useContractRead(contract, "isUser", address);
-
-  const {
-    data: getUserCid,
-    isLoading: getUserCidLoading,
-    error: getUserCidError,
-  } = useContractRead(contract, "getUserCid", address);
 
   const connectWithMetamask = useMetamask();
   const isMismatched = useNetworkMismatch();
@@ -54,18 +50,16 @@ const Navbar = () => {
       switchNetwork?.(ChainId.Mumbai);
     }
 
-    if (address && userExist) {
+    if (address && isUser) {
+      setUserExist(true);
       loggedInLinks[2].link = `/profile/${address}`;
-
-      const cid = getUserCid;
-      const setDidToContext = async () => {
-        const userDid = await fetchJsonIpfs(cid);
-        setDid(userDid);
-      };
-      setDidToContext();
     }
-    if (!address) setDid(null);
-  }, [address, userExist]);
+    if (!isUser) setUserExist(false);
+    if (!address) {
+      setUserDid(null);
+      setUserExist(null);
+    }
+  }, [address, userExist, isUser]);
   return (
     <div className={styles.container}>
       {isMismatched && (
@@ -83,7 +77,9 @@ const Navbar = () => {
                 <Link
                   key={idx}
                   href={
-                    link?.altLink && did === null ? link.altLink : link.link
+                    link?.altLink && (userExist === false || userExist === null)
+                      ? link.altLink
+                      : link.link
                   }
                 >
                   {link.title}

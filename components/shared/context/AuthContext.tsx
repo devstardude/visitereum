@@ -1,13 +1,17 @@
 import { createContext, useContext, ReactNode, useState } from "react";
 
 type authContextType = {
-  did: string | null;
-  setDid: (value: string | null) => void;
+  userExist: boolean | null;
+  userDid: string | null;
+  setUserExist: (val: boolean | null) => void;
+  setUserDid: (val: string | null) => void;
 };
 
 const authContextDefaultValues: authContextType = {
-  did: null,
-  setDid: () => {},
+  userExist: null,
+  userDid: null,
+  setUserExist: () => {},
+  setUserDid: () => {},
 };
 
 const AuthContext = createContext<authContextType>(authContextDefaultValues);
@@ -21,15 +25,21 @@ type Props = {
 };
 
 export function AuthProvider({ children }: Props) {
-  const [did, setDidValue] = useState<string | null>(null);
+  const [userExist, setUser] = useState<boolean | null>(null);
+  const [userDid, setDid] = useState<string | null>(null);
 
-  const setDid = (value: string | null) => {
-    setDidValue(value);
+  const setUserExist = (val: boolean | null) => {
+    setUser(val);
+  };
+  const setUserDid = (val: string | null) => {
+    setDid(val);
   };
 
   const value = {
-    did,
-    setDid,
+    userExist,
+    setUserExist,
+    userDid,
+    setUserDid,
   };
 
   return (
