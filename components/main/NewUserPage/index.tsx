@@ -34,10 +34,15 @@ const NewUserPage = () => {
       <h3>
         <span>Hey Traveller,</span> Looks like you're new here.
       </h3>
-      <p>
-        ( Click here to fetch your profile if it already exists on Ceramic Clay
-        testnet)
-      </p>
+      {!profile ? (
+        <p>
+          ( Click here to fetch your profile if it already exists on Ceramic
+          Clay testnet)
+        </p>
+      ) : (
+        <p>Please fill any remaining fields.</p>
+      )}
+
       <div className={styles.formDiv}>
         {profile ? (
           <>

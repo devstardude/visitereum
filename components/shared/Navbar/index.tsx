@@ -10,15 +10,33 @@ import {
   useNetwork,
   ChainId,
   useNetworkMismatch,
+  useContract,
+  useContractRead,
 } from "@thirdweb-dev/react";
 import { useAuth } from "../context/AuthContext";
+import {
+  address as contractAddress,
+  vistereumABI,
+} from "../../../contract/abi/visitereum";
 
 const Navbar = () => {
+  const address = useAddress();
   const authContext = useAuth();
+  const {
+    contract,
+    isLoading: stateLoading,
+    error: stateError,
+  } = useContract(contractAddress, vistereumABI);
+
+  const {
+    data: isUser,
+    isLoading,
+    error,
+  } = useContractRead(contract, "isUser", address);
+
   const { did, setDid } = authContext;
 
   const connectWithMetamask = useMetamask();
-  const address = useAddress();
   const isMismatched = useNetworkMismatch();
   const [, switchNetwork] = useNetwork();
   const [show, setShow] = useState(false);
@@ -32,6 +50,7 @@ const Navbar = () => {
       // check if did exists
       // if exists, user route is set to profile, set DID value
       // if not exists, set user route to new user, did still null, set did from new user page
+      console.log("is user ", isUser);
     }
     if (!address) setDid(null);
   }, [address]);
