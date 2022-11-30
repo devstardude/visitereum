@@ -7,3 +7,9 @@ export const encryptedDid = (did: string): string => {
   ).toString();
   return ciphertext;
 };
+
+export const decryptDid = (did: string): string => {
+  var bytes = CryptoJS.AES.decrypt(did, process.env.NEXT_PUBLIC_SECRET_TOKEN);
+  var originalDid = bytes.toString(CryptoJS.enc.Utf8);
+  return originalDid;
+};

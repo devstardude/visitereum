@@ -19,10 +19,12 @@ import {
   vistereumABI,
 } from "../../../contract/abi/visitereum";
 import { loggedInLinks, loggedOffLinks } from "./links";
+import { fetchJsonIpfs } from "../../utils/fetchJsonIpfs";
 
 const Navbar = () => {
   const address = useAddress();
   const authContext = useAuth();
+  const { did, setDid } = authContext;
   const {
     contract,
     isLoading: stateLoading,
@@ -35,7 +37,11 @@ const Navbar = () => {
     error,
   } = useContractRead(contract, "isUser", address);
 
-  const { did, setDid } = authContext;
+  const {
+    data: getUserCid,
+    isLoading: getUserCidLoading,
+    error: getUserCidError,
+  } = useContractRead(contract, "getUserCid", address);
 
   const connectWithMetamask = useMetamask();
   const isMismatched = useNetworkMismatch();
@@ -47,9 +53,16 @@ const Navbar = () => {
       // Prompt their wallet to switch networks
       switchNetwork?.(ChainId.Mumbai); // the chain you want here
     }
-    if (address) {
-      // if (!userExist(address)) {
-      // }
+    if (address && userExist) {
+      loggedInLinks[2].link = `/profile/${address}`;
+
+      const cid = getUserCid;
+      const setDidToContext = async () => {
+        const userDid = await fetchJsonIpfs(cid);
+        console.log(userDid);
+        setDid(userDid);
+      };
+      setDidToContext();
     }
     if (!address) setDid(null);
   }, [address, userExist]);

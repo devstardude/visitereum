@@ -1,11 +1,11 @@
 export interface Profile {
   profile: {
-    name: string;
-    description: string;
-    birthDate: string;
-    gender: string;
-    homeLocation: string;
-    image: any;
+    name?: string;
+    description?: string;
+    birthDate?: string;
+    gender?: string;
+    homeLocation?: string;
+    image?: any;
   };
 }
 

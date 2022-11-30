@@ -9,6 +9,7 @@ import ModalWrapper from "../../../shared/ModalWrapper";
 import AddPlaceForm from "./AddPlaceForm";
 import { Profile } from "../types";
 import EditProfile from "./EditProfile";
+import { filePreviewLink } from "../../../utils/filePreviewLink";
 
 const ProfileDetails = ({ profile }: Profile) => {
   const { name, description, homeLocation, birthDate, image, gender } = profile;
@@ -19,7 +20,7 @@ const ProfileDetails = ({ profile }: Profile) => {
           width={500}
           height={500}
           src="me.png"
-          loader={() => image}
+          loader={() => filePreviewLink(image.original.src)}
           alt="me.png"
         />
       </div>

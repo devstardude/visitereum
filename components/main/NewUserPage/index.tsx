@@ -1,17 +1,34 @@
 import UserProfileDataSet from "../../shared/UserProfileDataSet";
-import { EthereumAuthProvider, SelfID, WebClientSession } from "@self.id/web";
-import { useAddress } from "@thirdweb-dev/react";
+import { useAddress, useContract, useContractWrite } from "@thirdweb-dev/react";
 import { userData } from "../ProfilePage/types";
 import styles from "./style.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../../shared/Button";
 import { readProfile } from "../../utils/readProfile";
 import { writeProfile } from "../../utils/writeProfie";
 import { storeImage } from "../../utils/storeImage";
 import { storeJsonIpfs } from "../../utils/storeJsonIpfs";
+import {
+  vistereumABI,
+  address as contractAddress,
+} from "../../../contract/abi/visitereum";
+import { useAuth } from "../../shared/context/AuthContext";
 const NewUserPage = () => {
   const address = useAddress();
+  const authContext = useAuth();
+  const { did, setDid } = authContext;
   const [profile, setProfile] = useState<any>(null);
+  const {
+    contract,
+    isLoading: stateLoading,
+    error: stateError,
+  } = useContract(contractAddress, vistereumABI);
+  const {
+    mutate: addUser,
+    isLoading: writeLoading,
+    error: writeError,
+  } = useContractWrite(contract, "addUser");
+
   const fetchProfile = async () => {
     if (address) {
       const ids = await readProfile(address);
@@ -29,9 +46,10 @@ const NewUserPage = () => {
       data.image = imageUrl;
     }
     if (address) {
-      await writeProfile(address, data);
-      // const cid = await storeJsonIpfs(profileDid);
-      // console.log("cid", cid);
+      const profileDid = await writeProfile(address, data);
+      const cid = await storeJsonIpfs(profileDid);
+      addUser([address, cid]);
+      setDid(cid);
     }
   };
   return (
