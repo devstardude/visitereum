@@ -5,10 +5,10 @@ import { Profile } from "./types";
 
 const profile = {
   name: "Arun Shekhar",
-  bio: "Hello I'm Arun I love to travel",
-  birthday: "20-10-199",
+  description: "Hello I'm Arun I love to travel",
+  birthDate: "20-10-199",
   gender: "Male",
-  address: "address",
+  homeLocation: "address",
   image: "https://newsroompost.com/wp-content/uploads/2021/09/NFT.png",
 };
 

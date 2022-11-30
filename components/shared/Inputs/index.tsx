@@ -1,4 +1,5 @@
 import { Field, ErrorMessage } from "formik";
+import Image from "next/image";
 import styles from "./style.module.css";
 interface CustomInput {
   name: string;
@@ -6,6 +7,7 @@ interface CustomInput {
   disabled?: boolean;
   textarea?: boolean;
 }
+import { useState } from "react";
 export const CustomInput = ({
   name,
   placeholder,
@@ -98,14 +100,23 @@ interface CustomInputImage {
   name: string;
   placeholder: string;
   disabled?: boolean;
-  setValue: (file: any) => void;
+  setFileValue: (file: any) => void;
+  initialImage: string | null;
 }
 export const CustomInputImage = ({
   name,
   placeholder,
   disabled,
-  setValue,
+  setFileValue,
+  initialImage,
 }: CustomInputImage) => {
+  const [preview, setPreview] = useState<string | null>(null);
+  const setValue = (file: any) => {
+    const objectUrl = file && URL.createObjectURL(file);
+    setPreview(objectUrl);
+    setFileValue(file);
+  };
+
   return (
     <div className={styles.container}>
       <label className={styles.label} htmlFor={name}>
@@ -123,6 +134,32 @@ export const CustomInputImage = ({
       <span className={styles.error}>
         <ErrorMessage name={name} />
       </span>
+      {preview && (
+        <>
+          <div className={styles.image}>
+            <Image
+              width={500}
+              height={500}
+              src="me.png"
+              loader={() => preview}
+              alt="me.png"
+            />
+          </div>
+        </>
+      )}
+      {initialImage && !preview && (
+        <>
+          <div className={styles.image}>
+            <Image
+              width={500}
+              height={500}
+              src="me.png"
+              loader={() => initialImage}
+              alt="me.png"
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };

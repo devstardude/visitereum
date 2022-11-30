@@ -2,22 +2,20 @@ import { Form, Formik } from "formik";
 import * as Yup from "yup";
 import { CustomInput, CustomInputDate, CustomInputImage } from "../Inputs";
 import styles from "./style.module.css";
-
-interface userData {
-  name?: string;
-  bio?: string;
-  birthday?: string;
-  gender?: string;
-  address?: string;
-  image?: any;
-}
+import { userData } from "../../main/ProfilePage/types";
+import { filePreviewLink } from "../../utils/filePreviewLink";
 
 interface UserProfileDataSet {
   userData: userData;
   submitData: (data: userData) => void;
 }
 const UserProfileDataSet = ({ userData, submitData }: UserProfileDataSet) => {
-  const { name, bio, birthday, gender, address, image } = userData;
+  const { name, description, birthDate, gender, homeLocation, image } =
+    userData;
+  const initialImage = image ? filePreviewLink(image.original.src) : null;
+  const bdate = birthDate
+    ? new Date(birthDate).toISOString().split("T")[0]
+    : new Date().toISOString().split("T")[0];
   const dataSubmitHandler = async (
     values: userData,
     { setSubmitting, resetForm }: any
@@ -30,19 +28,19 @@ const UserProfileDataSet = ({ userData, submitData }: UserProfileDataSet) => {
       <Formik
         initialValues={{
           name: name ? name : "",
-          bio: bio ? bio : "",
-          birthday: birthday ? birthday : "",
+          description: description ? description : "",
+          birthDate: bdate,
           gender: gender ? gender : "",
-          address: address ? address : "",
+          homeLocation: homeLocation ? homeLocation : "",
           image: image ? image : null,
         }}
         validationSchema={Yup.object({
           name: Yup.string().required("Required"),
-          bio: Yup.string()
+          description: Yup.string()
             .min(4, "Must be 4 characters or more")
             .max(100, "Must be 100 characters or less")
             .required("Required"),
-          birthday: Yup.date().required("Required"),
+          birthDate: Yup.date().required("Required"),
           gender: Yup.string().required("Required"),
           image: Yup.string().required("Required"),
         })}
@@ -51,14 +49,15 @@ const UserProfileDataSet = ({ userData, submitData }: UserProfileDataSet) => {
         {({ setFieldValue, errors, touched, ...props }) => (
           <Form>
             <CustomInput name="name" placeholder="Name" />
-            <CustomInput name="bio" placeholder="Bio" textarea />
-            <CustomInputDate name="birthday" placeholder="Birthday" />
+            <CustomInput name="description" placeholder="Bio" textarea />
+            <CustomInputDate name="birthDate" placeholder="Birthday" />
             <CustomInput name="gender" placeholder="Gender" />
-            <CustomInput name="address" placeholder="Address" />
+            <CustomInput name="homeLocation" placeholder="Address" />
             <CustomInputImage
-              setValue={(file) => {
+              setFileValue={(file) => {
                 setFieldValue("image", file);
               }}
+              initialImage={initialImage}
               name="image"
               placeholder="Add image"
             />

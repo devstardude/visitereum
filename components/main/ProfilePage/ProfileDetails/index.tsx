@@ -11,7 +11,7 @@ import { Profile } from "../types";
 import EditProfile from "./EditProfile";
 
 const ProfileDetails = ({ profile }: Profile) => {
-  const { name, bio, address, birthday, image, gender } = profile;
+  const { name, description, homeLocation, birthDate, image, gender } = profile;
   return (
     <div className={styles.container}>
       <div className={styles.image}>
@@ -25,11 +25,11 @@ const ProfileDetails = ({ profile }: Profile) => {
       </div>
       <div className={styles.details}>
         <h1>{name}</h1>
-        <p>{bio}</p>
+        <p>{description}</p>
         <div className={styles.extraDetailsDiv}>
           <div className={styles.extraDetails}>
             <FaBirthdayCake />
-            <p>{birthday}</p>
+            <p>{birthDate}</p>
           </div>
           <div className={styles.extraDetails}>
             <BsGenderAmbiguous />
@@ -37,7 +37,7 @@ const ProfileDetails = ({ profile }: Profile) => {
           </div>
           <div className={styles.extraDetails}>
             <HiOutlineLocationMarker />
-            <p>{address}</p>
+            <p>{homeLocation}</p>
           </div>
         </div>
         <div className={styles.addDetailsContainer}>

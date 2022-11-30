@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import Button from "../../shared/Button";
 import { readProfile } from "../../utils/readProfile";
 import { writeProfile } from "../../utils/writeProfie";
+import { storeImage } from "../../utils/storeImage";
 const NewUserPage = () => {
   const address = useAddress();
   const [profile, setProfile] = useState<any>(null);
@@ -22,7 +23,8 @@ const NewUserPage = () => {
   };
 
   const setProfileData = async (data: userData) => {
-    console.log(data);
+    const imageUrl = await storeImage(data.image, data.image.name);
+    data.image = imageUrl;
     if (address) {
       await writeProfile(address, data);
     }

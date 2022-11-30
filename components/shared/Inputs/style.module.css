@@ -11,12 +11,22 @@
   @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-200 leading-tight focus:outline-none;
   @apply bg-gray-400/10;
 }
+
+.image {
+  @apply flex mt-6 w-[15rem] h-[15rem];
+  @apply border rounded-[10px] border-gray-400/30;
+  @apply bg-[#2a0164d3] overflow-hidden;
+}
+
+.image img {
+  @apply object-cover w-full h-full p-0 m-0;
+}
 .field input[type="date"]::-webkit-calendar-picker-indicator {
-  cursor: pointer!important;
+  cursor: pointer !important;
   border-radius: 4px;
   margin-right: 2px;
   opacity: 0.6;
-  filter: invert(0.8)!important;
+  filter: invert(0.8) !important;
 }
 .error {
   @apply text-red-500 text-base;

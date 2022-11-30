@@ -1,19 +1,19 @@
 export interface Profile {
   profile: {
     name: string;
-    bio: string;
-    birthday: string;
+    description: string;
+    birthDate: string;
     gender: string;
-    address: string;
+    homeLocation: string;
     image: any;
   };
 }
 
 export interface userData {
   name?: string;
-  bio?: string;
-  birthday?: string;
+  description?: string;
+  birthDate?: string;
   gender?: string;
-  address?: string;
+  homeLocation?: string;
   image?: any;
 }
