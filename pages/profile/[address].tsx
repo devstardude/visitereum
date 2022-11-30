@@ -41,7 +41,6 @@ const Profile = () => {
     const findDid = async () => {
       try {
         const userDid = await fetchJsonIpfs(cid);
-        console.log(userDid);
         setDid(userDid);
       } catch (e) {
         console.log(e);

@@ -3,7 +3,7 @@ import ProfileDetails from "./ProfileDetails";
 import styles from "./style.module.css";
 import { usePublicRecord } from "@self.id/framework";
 import { useEffect, useState } from "react";
-
+import { useViewerRecord } from "@self.id/framework";
 interface ProfilePage {
   did: string;
 }
@@ -13,6 +13,10 @@ const ProfilePage = ({ did }: ProfilePage) => {
     "basicProfile",
     did
   );
+  const record = useViewerRecord("basicProfile");
+  useEffect(() => {
+    console.log(record.content?.name);
+  }, [content]);
 
   return (
     <div className={styles.container}>

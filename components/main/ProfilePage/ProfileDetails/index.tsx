@@ -8,18 +8,25 @@ import { FaBirthdayCake } from "react-icons/fa";
 import { AiOutlineEdit } from "react-icons/ai";
 import ModalWrapper from "../../../shared/ModalWrapper";
 import AddPlaceForm from "./AddPlaceForm";
-import { Profile, userData } from "../types";
+import {  userData } from "../types";
 import EditProfile from "./EditProfile";
 import { filePreviewLink } from "../../../utils/filePreviewLink";
 interface ProfileDetails {
   profile: userData;
 }
 const ProfileDetails = ({ profile }: ProfileDetails) => {
-  const { name, description, homeLocation, birthDate, image, gender } = profile;
+  const [profileData, setProfileData] = useState(profile);
+  const { name, description, homeLocation, birthDate, image, gender } =
+    profileData;
 
-  const imageSrc = image
-    ? image.original.src
-    : "https://newsroompost.com/wp-content/uploads/2021/09/NFT.png";
+  const editedHandler = (data: userData) => {
+    setProfileData((prev) => {
+      console.log(prev.image);
+      return { ...data,image: prev.image };
+    });
+  };
+
+  const dummy = "https://newsroompost.com/wp-content/uploads/2021/09/NFT.png";
   return (
     <div className={styles.container}>
       <div className={styles.image}>
@@ -27,7 +34,7 @@ const ProfileDetails = ({ profile }: ProfileDetails) => {
           width={500}
           height={500}
           src="me.png"
-          loader={() => filePreviewLink(imageSrc)}
+          loader={() => (image ? filePreviewLink(image.original.src) : dummy)}
           alt="me.png"
         />
       </div>
@@ -56,7 +63,7 @@ const ProfileDetails = ({ profile }: ProfileDetails) => {
             icon={<AiOutlineEdit size={28} />}
             text={"Edit profile"}
           >
-            <EditProfile profile={profile} />
+            <EditProfile profile={profile} edited={editedHandler} />
           </ModalWrapper>
         </div>
       </div>

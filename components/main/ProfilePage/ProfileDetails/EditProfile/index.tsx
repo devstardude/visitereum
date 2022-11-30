@@ -9,8 +9,9 @@ import LoadingScreen from "../../../../shared/LoadingScreen";
 
 interface EditProfile {
   profile: userData;
+  edited: (data: userData) => void;
 }
-const EditProfile = ({ profile }: EditProfile) => {
+const EditProfile = ({ profile, edited }: EditProfile) => {
   const address = useAddress();
   const [loadingScreen, setLoadingScreen] = useState(false);
 
@@ -23,6 +24,7 @@ const EditProfile = ({ profile }: EditProfile) => {
     if (address) {
       await writeProfile(address, data);
     }
+    edited(data);
     setLoadingScreen(false);
   };
   return (
