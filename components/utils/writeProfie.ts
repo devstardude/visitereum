@@ -19,7 +19,7 @@ export const writeProfile = async (address: string, data: userData) => {
         height: 400,
       },
     };
-    await self.set("basicProfile", {
+    await self.merge("basicProfile", {
       name: data.name,
       image: imageSources,
       description: data.description,
@@ -29,7 +29,7 @@ export const writeProfile = async (address: string, data: userData) => {
     });
     return self.id;
   }
-  await self.set("basicProfile", {
+  await self.merge("basicProfile", {
     name: data.name,
     description: data.description,
     birthDate: data.birthDate,

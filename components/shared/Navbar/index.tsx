@@ -60,7 +60,6 @@ const Navbar = () => {
       const cid = getUserCid;
       const setDidToContext = async () => {
         const userDid = await fetchJsonIpfs(cid);
-        console.log(userDid);
         setDid(userDid);
       };
       setDidToContext();

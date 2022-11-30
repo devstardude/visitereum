@@ -2,6 +2,7 @@ import ContentTab from "./ContentTab";
 import ProfileDetails from "./ProfileDetails";
 import styles from "./style.module.css";
 import { usePublicRecord } from "@self.id/framework";
+import { useEffect, useState } from "react";
 
 interface ProfilePage {
   did: string;
@@ -12,7 +13,7 @@ const ProfilePage = ({ did }: ProfilePage) => {
     "basicProfile",
     did
   );
-  console.log(content);
+
   return (
     <div className={styles.container}>
       {content && <ProfileDetails profile={content} />}

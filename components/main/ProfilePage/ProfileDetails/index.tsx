@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useState } from "react";
 import styles from "./style.module.css";
 import { BsGenderAmbiguous } from "react-icons/bs";
 import { HiOutlineLocationMarker } from "react-icons/hi";
@@ -7,12 +8,18 @@ import { FaBirthdayCake } from "react-icons/fa";
 import { AiOutlineEdit } from "react-icons/ai";
 import ModalWrapper from "../../../shared/ModalWrapper";
 import AddPlaceForm from "./AddPlaceForm";
-import { Profile } from "../types";
+import { Profile, userData } from "../types";
 import EditProfile from "./EditProfile";
 import { filePreviewLink } from "../../../utils/filePreviewLink";
-
-const ProfileDetails = ({ profile }: Profile) => {
+interface ProfileDetails {
+  profile: userData;
+}
+const ProfileDetails = ({ profile }: ProfileDetails) => {
   const { name, description, homeLocation, birthDate, image, gender } = profile;
+
+  const imageSrc = image
+    ? image.original.src
+    : "https://newsroompost.com/wp-content/uploads/2021/09/NFT.png";
   return (
     <div className={styles.container}>
       <div className={styles.image}>
@@ -20,7 +27,7 @@ const ProfileDetails = ({ profile }: Profile) => {
           width={500}
           height={500}
           src="me.png"
-          loader={() => filePreviewLink(image.original.src)}
+          loader={() => filePreviewLink(imageSrc)}
           alt="me.png"
         />
       </div>
@@ -49,7 +56,7 @@ const ProfileDetails = ({ profile }: Profile) => {
             icon={<AiOutlineEdit size={28} />}
             text={"Edit profile"}
           >
-            <EditProfile />
+            <EditProfile profile={profile} />
           </ModalWrapper>
         </div>
       </div>

@@ -3,7 +3,6 @@ import styles from "./style.module.css";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
 
-
 const AddPlaceForm = () => {
   const dataSubmitHandler = async (
     values: any,

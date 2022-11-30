@@ -13,9 +13,11 @@ import {
   address as contractAddress,
 } from "../../../contract/abi/visitereum";
 import { useAuth } from "../../shared/context/AuthContext";
-
+import LoadingScreen from "../../shared/LoadingScreen";
+import Router from "next/router";
 
 const NewUserPage = () => {
+  const [loadingScreen, setLoadingScreen] = useState(false);
   const address = useAddress();
   const authContext = useAuth();
   const { did, setDid } = authContext;
@@ -33,16 +35,19 @@ const NewUserPage = () => {
 
   const fetchProfile = async () => {
     if (address) {
+      setLoadingScreen(true);
       const ids = await readProfile(address);
       if (ids) {
         setProfile(ids);
       } else {
         setProfile({});
       }
+      setLoadingScreen(false);
     }
   };
 
   const setProfileData = async (data: userData) => {
+    setLoadingScreen(true);
     if (data.image) {
       const imageUrl = await storeImage(data.image, data.image.name);
       data.image = imageUrl;
@@ -52,10 +57,13 @@ const NewUserPage = () => {
       const cid = await storeJsonIpfs(profileDid);
       addUser([address, cid]);
       setDid(cid);
+      setLoadingScreen(false);
+      Router.push(`/profile/${address}`);
     }
   };
   return (
     <div className={styles.container}>
+      {loadingScreen && <LoadingScreen show={loadingScreen} />}
       <h3>
         <span>Hey Traveller,</span> Looks like you're new here.
       </h3>
