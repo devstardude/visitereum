@@ -39,7 +39,7 @@ const Visited = ({ data }: Props) => {
       setFilterTag(customFilter);
     }
   }, [customFilter]);
-  
+
   return (
     <div className={styles.container}>
       <div className={styles.filterDiv}>

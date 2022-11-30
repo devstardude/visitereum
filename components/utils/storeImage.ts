@@ -1,5 +1,7 @@
 import { Web3Storage } from "web3.storage";
 
+// Store image assets in IPFS
+
 const namePrefix = "ImageGallery";
 export async function storeImage(imageFile: File, caption: string) {
   const web3StorageClient = new Web3Storage({

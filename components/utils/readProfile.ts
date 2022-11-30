@@ -1,5 +1,7 @@
 import { EthereumAuthProvider, SelfID, WebClientSession } from "@self.id/web";
 
+// Read user data from Ceramic DID Database
+
 export const readProfile = async (address: string) => {
   const client = new WebClientSession({
     ceramic: "testnet-clay",

@@ -1,6 +1,8 @@
 import { encryptedDid } from "./encrptyDid";
 import { Web3Storage } from "web3.storage";
 
+// Store encrypted DID of user into ipfs 
+
 const makeFileObjects = (obj: object) => {
   const blob = new Blob([JSON.stringify(obj)], { type: "application/json" });
 

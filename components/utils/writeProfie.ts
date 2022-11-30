@@ -1,5 +1,8 @@
 import { userData } from "../main/ProfilePage/types";
 import { EthereumAuthProvider, SelfID, WebClientSession } from "@self.id/web";
+
+// Set new data in the ceramic did database
+
 export const writeProfile = async (address: string, data: userData) => {
   const client = new WebClientSession({
     ceramic: "testnet-clay",

@@ -51,8 +51,9 @@ const Navbar = () => {
     // Check if the user is connected to the wrong network
     if (isMismatched) {
       // Prompt their wallet to switch networks
-      switchNetwork?.(ChainId.Mumbai); // the chain you want here
+      switchNetwork?.(ChainId.Mumbai);
     }
+
     if (address && userExist) {
       loggedInLinks[2].link = `/profile/${address}`;
 

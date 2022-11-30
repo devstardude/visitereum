@@ -14,7 +14,6 @@ const FilterChip = ({ chipName, active, clicked, count }: FilterChip) => {
     >
       {chipName}
       <span>({count})</span>
-
       <BsCheck2Circle />
     </div>
   );

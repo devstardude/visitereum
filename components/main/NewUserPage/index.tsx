@@ -13,6 +13,8 @@ import {
   address as contractAddress,
 } from "../../../contract/abi/visitereum";
 import { useAuth } from "../../shared/context/AuthContext";
+
+
 const NewUserPage = () => {
   const address = useAddress();
   const authContext = useAuth();

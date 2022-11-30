@@ -5,10 +5,13 @@ import styles from "./style.module.css";
 import { userData } from "../../main/ProfilePage/types";
 import { filePreviewLink } from "../../utils/filePreviewLink";
 
+// User profile form with validation
+
 interface UserProfileDataSet {
   userData: userData;
   submitData: (data: userData) => void;
 }
+
 const UserProfileDataSet = ({ userData, submitData }: UserProfileDataSet) => {
   const { name, description, birthDate, gender, homeLocation, image } =
     userData;
@@ -35,13 +38,22 @@ const UserProfileDataSet = ({ userData, submitData }: UserProfileDataSet) => {
           image: null,
         }}
         validationSchema={Yup.object({
-          name: Yup.string().required("Required"),
+          name: Yup.string()
+            .required("Required")
+            .min(2, "Must be 2 characters or more")
+            .max(100, "Must be 150 characters or less"),
           description: Yup.string()
             .min(4, "Must be 4 characters or more")
-            .max(100, "Must be 100 characters or less")
+            .max(420, "Must be 100 characters or less")
             .required("Required"),
           birthDate: Yup.date().required("Required"),
-          gender: Yup.string().required("Required"),
+          gender: Yup.string()
+            .required("Required")
+            .min(1, "Must be 100 characters or less")
+            .max(42, "Must be 100 characters or less"),
+          homeLocation: Yup.string()
+            .min(1, "Must be 4 characters or less")
+            .max(42, "Must be 140 characters or less"),
         })}
         onSubmit={dataSubmitHandler}
       >

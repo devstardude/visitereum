@@ -1,5 +1,7 @@
 import CryptoJS from "crypto-js";
 
+// Encrypt and Decrypt DID for uploading in ipfs
+
 export const encryptedDid = (did: string): string => {
   const ciphertext = CryptoJS.AES.encrypt(
     did,

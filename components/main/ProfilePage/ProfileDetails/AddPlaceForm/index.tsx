@@ -2,7 +2,8 @@ import { CustomInput, CustomSelectInput } from "../../../../shared/Inputs";
 import styles from "./style.module.css";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
-import Button from "../../../../shared/Button";
+
+
 const AddPlaceForm = () => {
   const dataSubmitHandler = async (
     values: any,

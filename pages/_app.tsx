@@ -10,7 +10,9 @@ const activeChainId = ChainId.Mumbai || ChainId.Mainnet;
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
+    {/* Thirdweb for connecting wallet and contract */}
       <ThirdwebProvider desiredChainId={activeChainId}>
+        {/* Ceramic for decentralised identity management */}
         <CeramicProvidor client={{ ceramic: "testnet-clay" }}>
           <AuthProvider>
             <Navbar />
