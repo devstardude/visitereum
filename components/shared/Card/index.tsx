@@ -3,13 +3,15 @@ import { filePreviewLink } from "../../utils/filePreviewLink";
 import styles from "./style.module.css";
 
 interface Card {
-  title: string;
-  description: string;
-  image: string;
+  title: string | undefined;
+  description: string | undefined;
+  image?: string;
   children?: React.ReactNode;
 }
 const Card = ({ title, description, image, children }: Card) => {
-  const img = filePreviewLink(image);
+  const img = image
+    ? filePreviewLink(image)
+    : "https://newsroompost.com/wp-content/uploads/2021/09/NFT.png";
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>

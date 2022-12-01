@@ -6,8 +6,8 @@
   @apply p-0 m-0 underline underline-offset-8;
 }
 
-.placesContainer p{
-    @apply text-center;
+.placesContainer p {
+  @apply text-center;
 }
 
 .placeHeading {

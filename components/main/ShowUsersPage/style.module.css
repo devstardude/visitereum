@@ -1,0 +1,7 @@
+.container {
+  @apply mx-[2rem] lg:px-[10rem] pt-[10rem] min-h-screen;
+}
+.container h3 {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  @apply mt-0 p-0 text-center font-semibold;
+}
