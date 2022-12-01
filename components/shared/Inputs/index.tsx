@@ -1,4 +1,5 @@
 import { Field, ErrorMessage } from "formik";
+import SearchBox from "tomtom-react-searchbox";
 import Image from "next/image";
 import styles from "./style.module.css";
 interface CustomInput {
@@ -101,7 +102,7 @@ interface CustomInputImage {
   placeholder: string;
   disabled?: boolean;
   setFileValue: (file: any) => void;
-  initialImage: string | null;
+  initialImage?: string | null;
 }
 export const CustomInputImage = ({
   name,
@@ -180,3 +181,57 @@ function CustomFileUpload({ field, setValue }: any) {
     </div>
   );
 }
+
+// map
+
+interface CustomInputMap {
+  name: string;
+  placeholder: string;
+  disabled?: boolean;
+  setFieldValue: (val: any) => void;
+}
+export const CustomInputMap = ({
+  name,
+  placeholder,
+  disabled,
+  setFieldValue,
+}: CustomInputMap) => {
+  const setValue = (val: any) => {
+    setFieldValue(val);
+  };
+  return (
+    <div className={styles.container}>
+      <label className={styles.label} htmlFor={name}>
+        {placeholder}
+      </label>
+      <Field
+        disabled={disabled}
+        name={name}
+        className={styles.field}
+        component={MapInput}
+        placeholder={placeholder}
+        setValue={setValue}
+      />
+      <span className={styles.error}>
+        <ErrorMessage name={name} />
+      </span>
+    </div>
+  );
+};
+
+export const MapInput = ({ field, setValue }: any) => {
+  return (
+    <SearchBox
+      wrapperClassName={styles.searchBox}
+      onResultChoose={(result: any): any => setValue(result)}
+      autofocus={false}
+      placeholder="Search for an address"
+      searchOptions={{
+        key: process.env.NEXT_PUBLIC_TOMTOM_API_KEY,
+        language: "en-Gb",
+        limit: 5,
+        typeahead: true,
+      }}
+    />
+  );
+};

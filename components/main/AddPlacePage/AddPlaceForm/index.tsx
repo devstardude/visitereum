@@ -1,4 +1,9 @@
-import { CustomInput, CustomSelectInput } from "../../../shared/Inputs";
+import {
+  CustomInput,
+  CustomInputImage,
+  CustomInputMap,
+  CustomSelectInput,
+} from "../../../shared/Inputs";
 import styles from "./style.module.css";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
@@ -10,12 +15,13 @@ const AddPlaceForm = () => {
   ) => {
     const data = {
       wallet: "0xabcd",
-      address: values.address,
+      address: `${values.address.address?.freeformAddress}, ${values.address.address?.country}`,
+      add: values.address,
       description: values.description,
       type: values.type,
       image: values.image,
-      lattitude: "100000",
-      longitude: "100000",
+      lattitude: String(values.address.position.lat),
+      longitude: String(values.address.position.lon),
     };
     console.log(data);
   };
@@ -26,29 +32,40 @@ const AddPlaceForm = () => {
           address: "",
           description: "",
           type: "Urban",
-          image: "",
+          image: null,
         }}
         validationSchema={Yup.object({
-          address: Yup.string().required("Required"),
+          address: Yup.object().required("Required"),
           description: Yup.string()
             .min(4, "Must be 4 characters or more")
             .max(100, "Must be 100 characters or less")
             .required("Required"),
           type: Yup.string().required("Required"),
-          image: Yup.string().required("Required"),
         })}
         onSubmit={dataSubmitHandler}
       >
         {({ setFieldValue, errors, touched, ...props }) => (
           <Form>
-            <CustomInput name="address" placeholder="Address" />
+            {/* <PlaceSearchBox searchResult={() => {}} /> */}
+            <CustomInputMap
+              setFieldValue={(val) => setFieldValue("address", val)}
+              name="address"
+              placeholder="Address"
+            />
             <CustomInput
               name="description"
               placeholder="Description"
               textarea
             />
             <CustomSelectInput name="type" placeholder="Select type of place" />
-            <CustomInput name="image" placeholder="Add image" />
+
+            <CustomInputImage
+              setFileValue={(file) => {
+                setFieldValue("image", file);
+              }}
+              name="image"
+              placeholder="Add image"
+            />
             <div className={styles.submitButtonDiv}>
               <button type="submit">Submit</button>
             </div>

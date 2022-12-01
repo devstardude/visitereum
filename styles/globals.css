@@ -44,3 +44,31 @@ option {
 .text-3 {
   font-family: "Plus Jakarta Sans";
 }
+
+/* //Map  */
+.react-searchbox {
+  @apply relative;
+}
+.react-searchbox__input-wrapper {
+  @apply m-0 z-10 border-none;
+  @apply w-full relative;
+}
+.react-searchbox__input {
+  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-200 leading-tight focus:outline-none;
+  @apply bg-gray-400/10;
+  @apply relative;
+}
+.react-searchbox__result {
+  @apply w-full border-b-2 border-gray-600/30;
+  @apply w-full;
+}
+.react-searchbox__results {
+  @apply px-4 py-2;
+  @apply absolute top-14 left-0;
+  @apply bg-[#10041c] border-[#430086] border-2 rounded-lg;
+  width: 100% !important;
+
+}
+.react-searchbox__clear {
+  @apply hidden;
+}
