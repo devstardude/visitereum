@@ -1,0 +1,8 @@
+.container {
+  @apply flex flex-col justify-center text-center pt-[4rem];
+}
+
+.container h2 {
+  @apply text-[#9A53FF] font-thin text-[3rem];
+  font-family: "Plus Jakarta Sans";
+}

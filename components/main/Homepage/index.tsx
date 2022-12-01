@@ -1,3 +1,4 @@
+import Ending from "./Ending";
 import InfoSection from "./InfoSection";
 import Masthead from "./Masthead";
 import styles from "./style.module.css";
@@ -6,6 +7,7 @@ const Homepage = () => {
     <div className={styles.container}>
       <Masthead />
       <InfoSection />
+      <Ending />
     </div>
   );
 };

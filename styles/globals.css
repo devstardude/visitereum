@@ -45,7 +45,7 @@ option {
   font-family: "Plus Jakarta Sans";
 }
 
-/* //Map  */
+/* / Map  */
 .react-searchbox {
   @apply relative;
 }
@@ -67,7 +67,6 @@ option {
   @apply absolute top-14 left-0;
   @apply bg-[#10041c] border-[#430086] border-2 rounded-lg;
   width: 100% !important;
-
 }
 .react-searchbox__clear {
   @apply hidden;
