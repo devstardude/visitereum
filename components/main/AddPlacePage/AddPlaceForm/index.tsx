@@ -7,23 +7,29 @@ import {
 import styles from "./style.module.css";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
+import { v4 as uuidv4 } from "uuid";
+import { placeDataWrite } from "../../ProfilePage/types";
 
-const AddPlaceForm = () => {
+interface AddPlaceForm {
+  placeData: (placeData: placeDataWrite) => void;
+}
+
+const AddPlaceForm = ({ placeData }: AddPlaceForm) => {
+  //wallet
   const dataSubmitHandler = async (
     values: any,
     { setSubmitting, resetForm }: any
   ) => {
     const data = {
-      wallet: "0xabcd",
+      id: uuidv4(),
       address: `${values.address.address?.freeformAddress}, ${values.address.address?.country}`,
-      add: values.address,
       description: values.description,
-      type: values.type,
       image: values.image,
       lattitude: String(values.address.position.lat),
       longitude: String(values.address.position.lon),
+      type: values.type,
     };
-    console.log(data);
+    placeData(data);
   };
   return (
     <div>

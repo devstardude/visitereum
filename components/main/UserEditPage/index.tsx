@@ -89,7 +89,7 @@ const UserEditPage = () => {
   }, [userExist]);
   return (
     <div className={styles.container}>
-      {loadingScreen && <LoadingScreen show={loadingScreen} />}
+      {loadingScreen && <LoadingScreen />}
       {!userExist && (
         <h3>
           <span>Hey Traveller,</span> Looks like you're new here.
