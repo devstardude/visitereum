@@ -33,7 +33,6 @@ const Visited = ({ data }: Props) => {
       }
     });
   };
-  console.log("data", data);
   useEffect(() => {
     if (customFilter.length === 0) {
       setFilterTag(filters);
@@ -75,6 +74,7 @@ const Visited = ({ data }: Props) => {
                       .filter((item) => item.type === filter)
                       .map((place, idx) => (
                         <ModalWrapper
+                        key={idx}
                           component={
                             <MapBox
                               lat={place.lattitude}

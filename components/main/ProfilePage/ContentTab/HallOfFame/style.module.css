@@ -1,0 +1,7 @@
+.container {
+  @apply flex justify-center gap-4 flex-wrap;
+}
+.cardContainer {
+  @apply flex justify-center lg:justify-around flex-wrap gap-6;
+  @apply mt-[3rem]
+}
