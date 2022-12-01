@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { filePreviewLink } from "../../utils/filePreviewLink";
 import styles from "./style.module.css";
 
 interface Card {
@@ -6,8 +7,8 @@ interface Card {
   description: string;
   children?: React.ReactNode;
 }
-const Card = ({ title, description, children }: Card) => {
-  const img = "https://newsroompost.com/wp-content/uploads/2021/09/NFT.png";
+const Card = ({ title, description, image, children }: Card) => {
+  const img = filePreviewLink(image);
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>

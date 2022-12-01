@@ -27,3 +27,12 @@ export interface placeDataWrite {
   longitude: string;
   type: string;
 }
+
+export interface placeDataRead {
+  address: string;
+  description: string;
+  image: string;
+  lattitude: string;
+  longitude: string;
+  type: string;
+}

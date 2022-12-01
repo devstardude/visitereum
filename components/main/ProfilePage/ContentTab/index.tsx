@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./style.module.css";
 import Button from "../../../shared/Button";
 import Visited from "./Visited";
@@ -83,7 +83,7 @@ interface ContentTab {
 
 const ContentTab = ({ address }: ContentTab) => {
   const [tab, setTab] = useState<boolean>(true);
-
+  const [places, setPlace] = useState<any>(null);
   // connect to contract
   const {
     contract,
@@ -92,11 +92,32 @@ const ContentTab = ({ address }: ContentTab) => {
   } = useContract(contractAddress, vistereumABI);
 
   const {
-    data: getUserPlaces,
+    data: getUserPlaceIds,
     isLoading,
     error,
   } = useContractRead(contract, "getUserPlaces", address);
-  console.log(getUserPlaces);
+
+  useEffect(() => {
+    const getUserPlaces = async () => {
+      if (contract && getUserPlaceIds && getUserPlaceIds.lenght !== 0) {
+        let userPlacesArray = [];
+        for (const i of getUserPlaceIds) {
+          const place = await contract.call("getPlace", i);
+          const placeObject = {
+            address: place.userAddress,
+            description: place.description,
+            lattitude: place.latitude,
+            longitude: place.longitude,
+            type: place.typeOfPlace,
+            image: place.imageUrl,
+          };
+          userPlacesArray.push(placeObject);
+        }
+        setPlace(userPlacesArray);
+      }
+    };
+    getUserPlaces();
+  }, [getUserPlaceIds, contract]);
   return (
     <div className={styles.container}>
       <div className={styles.buttonContainer}>
@@ -108,7 +129,7 @@ const ContentTab = ({ address }: ContentTab) => {
         </Button>
       </div>
       <div className={styles.contentContainer}>
-        {tab ? <Visited data={visitedPlaces} /> : <HallOfFame />}
+        {tab ? <Visited data={places} /> : <HallOfFame />}
       </div>
     </div>
   );
