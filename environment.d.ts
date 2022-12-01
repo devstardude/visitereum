@@ -3,6 +3,7 @@ declare namespace NodeJS {
     readonly NEXT_PUBLIC_WEB_STORAGE_TOKEN: string;
     readonly NEXT_PUBLIC_SECRET_TOKEN: string;
     readonly NEXT_PUBLIC_TOMTOM_API_KEY: string;
+    readonly NEXT_PUBLIC_MAP_BOX: string;
   }
 }
 

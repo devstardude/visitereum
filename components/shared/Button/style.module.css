@@ -1,5 +1,5 @@
 .container {
-  @apply py-[0.3rem] px-[1.2rem] lg:px-[2rem];
+  @apply py-[0.3rem] px-[0.3rem] lg:px-[2rem];
   @apply border border-[#9A53FF]/60 rounded-full;
   @apply hover:bg-[#9b53ff3d] transition-colors cursor-pointer;
   @apply flex items-center justify-center gap-2;

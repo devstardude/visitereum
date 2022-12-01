@@ -2,11 +2,11 @@
   @apply border border-[#9A53FF]/60 rounded-lg overflow-hidden outline-none;
   @apply absolute inset-0 m-auto;
   @apply bg-[#10041C];
-  @apply w-[90%] lg:w-[70%] h-[90%];
+  @apply w-[90%] lg:w-[60%] h-[70%];
 }
 
 .overlay {
-  @apply fixed inset-0 bg-gray-900/50 z-30 overflow-y-hidden;
+  @apply fixed inset-0 bg-black/90 z-30 overflow-y-hidden;
 }
 .closeButton {
   @apply flex justify-end p-2;

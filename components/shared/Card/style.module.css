@@ -1,6 +1,6 @@
 .container {
   @apply flex flex-col;
-  @apply rounded-[2.3rem] p-4 w-[20rem] mb-4;
+  @apply rounded-[2.3rem] p-4 md:w-[20rem] mb-4;
   @apply border border-[#9A53FF]/60;
   @apply bg-[#9b53ff1a] hover:bg-[#9b53ff3d] transition-colors duration-300  cursor-pointer;
 }
@@ -17,7 +17,6 @@
   @apply my-2 px-2;
   @apply text-center;
 }
-.container p{
-    @apply text-sm lg:text-base text-center;
-    /* @apply */
+.container p {
+  @apply text-sm lg:text-base text-center;
 }

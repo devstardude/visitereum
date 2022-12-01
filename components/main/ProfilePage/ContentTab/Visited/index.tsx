@@ -6,6 +6,8 @@ import { placeDataRead } from "../../types";
 import { BsBuilding, BsGlobe } from "react-icons/bs";
 import { FaLeaf } from "react-icons/fa";
 import { BiWater } from "react-icons/bi";
+import ModalWrapper from "../../../../shared/ModalWrapper";
+import MapBox from "./MapBox";
 
 const filters: string[] = ["Urban", "Nature", "Sea", "Others"];
 const Icons: any = {
@@ -72,12 +74,21 @@ const Visited = ({ data }: Props) => {
                     {data
                       .filter((item) => item.type === filter)
                       .map((place, idx) => (
-                        <Card
-                          key={idx}
-                          title={place.address}
-                          description={place.description}
-                          image={place.image}
-                        />
+                        <ModalWrapper
+                          component={
+                            <MapBox
+                              lat={place.lattitude}
+                              lon={place.longitude}
+                            />
+                          }
+                        >
+                          <Card
+                            key={idx}
+                            title={place.address}
+                            description={place.description}
+                            image={place.image}
+                          />
+                        </ModalWrapper>
                       ))}
                   </div>
                 )}
