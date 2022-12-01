@@ -2,8 +2,6 @@ import ContentTab from "./ContentTab";
 import ProfileDetails from "./ProfileDetails";
 import styles from "./style.module.css";
 import { usePublicRecord } from "@self.id/framework";
-import { useEffect, useState } from "react";
-import { useViewerRecord } from "@self.id/framework";
 
 interface ProfilePage {
   did: string;

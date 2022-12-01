@@ -6,6 +6,7 @@ import {
 import AllUsersContainer from "./AllUsersContainer";
 import styles from "./style.module.css";
 import { useEffect } from "react";
+import LoadingScreen from "../../shared/LoadingScreen";
 const ShowUsers = () => {
   // connect to contract
   const {
@@ -24,9 +25,8 @@ const ShowUsers = () => {
   return (
     <div className={styles.container}>
       <h3>Users</h3>
-      <div>
-        <AllUsersContainer userAddresses={getUsers} />
-      </div>
+      {isLoading && !getUsers && <LoadingScreen />}
+      <div>{getUsers && <AllUsersContainer userAddresses={getUsers} />}</div>
     </div>
   );
 };
