@@ -19,7 +19,6 @@ import {
   vistereumABI,
 } from "../../../contract/abi/visitereum";
 import { loggedInLinks, loggedOffLinks } from "./links";
-import { fetchJsonIpfs } from "../../utils/fetchJsonIpfs";
 
 const Navbar = () => {
   const address = useAddress();

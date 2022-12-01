@@ -3,15 +3,21 @@ import Button from "../../../../shared/Button";
 import styles from "./style.module.css";
 import { useContract } from "@thirdweb-dev/react";
 import NftCard from "./NftCard";
+import { isNftClaimable } from "../../../../utils/isNftClaimable";
+import { useAuth } from "../../../../shared/context/AuthContext";
 
 interface allNftArray {
   id: string;
   name: string | number | undefined;
   description: string | null | undefined;
   image: string | null | undefined;
+  claimable: boolean;
 }
-
 const HallOfFame = () => {
+  // context states
+  const authContext = useAuth();
+  const { userPlaceCount } = authContext;
+
   const [section, setSection] = useState<number>(0);
   const [allNft, setAllNft] = useState<allNftArray[] | null>(null);
   // connect to contract
@@ -22,22 +28,26 @@ const HallOfFame = () => {
   } = useContract("0x5B0dCBDCf259720c9eE98139e5F5458414d952cA", "edition-drop");
 
   useEffect(() => {
-    const getAllNfts = async () => {
-      if (contract) {
-        const nfts = await contract.getAll();
-        const allNftArray = nfts.map((nft) => {
-          return {
-            id: nft.metadata.id,
-            name: nft.metadata.name,
-            description: nft.metadata.description,
-            image: nft.metadata.image,
-          };
-        });
-        setAllNft(allNftArray);
-      }
-    };
-    getAllNfts();
-  }, [contract]);
+    if (userPlaceCount) {
+      const getAllNfts = async () => {
+        if (contract) {
+          const nfts = await contract.getAll();
+          const allNftArray = nfts.map((nft) => {
+            return {
+              id: nft.metadata.id,
+              name: nft.metadata.name,
+              description: nft.metadata.description,
+              image: nft.metadata.image,
+              claimable: isNftClaimable(nft.metadata.id, userPlaceCount),
+            };
+          });
+          setAllNft(allNftArray);
+        }
+      };
+      getAllNfts();
+    }
+  }, [contract, userPlaceCount]);
+  console.log(allNft);
 
   return (
     <div>
@@ -69,7 +79,9 @@ const HallOfFame = () => {
                     name={nft.name}
                     description={nft.description}
                     image={nft.image}
-                  ></NftCard>
+                  >
+                    {nft.claimable && <Button>Claim</Button>}
+                  </NftCard>
                 ))}
               </>
             ) : (

@@ -9,12 +9,18 @@ import {
   vistereumABI,
   address as contractAddress,
 } from "../../../../contract/abi/visitereum";
+import { useAuth } from "../../../shared/context/AuthContext";
+
+const types: string[] = ["Urban", "Nature", "Sea", "Others"];
 
 interface ContentTab {
   address: string;
 }
-
 const ContentTab = ({ address }: ContentTab) => {
+  // context states
+  const authContext = useAuth();
+  const { setUserPlaceCount } = authContext;
+
   const [tab, setTab] = useState<boolean>(true);
   const [places, setPlace] = useState<any>(null);
   // connect to contract
@@ -46,6 +52,19 @@ const ContentTab = ({ address }: ContentTab) => {
           };
           userPlacesArray.push(placeObject);
         }
+
+        // set user place count context
+        const userPlaceCountContext = {
+          urban: userPlacesArray.filter((place) => place.type === types[0])
+            .length,
+          nature: userPlacesArray.filter((place) => place.type === types[1])
+            .length,
+          sea: userPlacesArray.filter((place) => place.type === types[2])
+            .length,
+          others: userPlacesArray.filter((place) => place.type === types[3])
+            .length,
+        };
+        setUserPlaceCount(userPlaceCountContext);
         setPlace(userPlacesArray);
       }
     };

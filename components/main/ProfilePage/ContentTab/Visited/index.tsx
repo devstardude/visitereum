@@ -10,6 +10,7 @@ import ModalWrapper from "../../../../shared/ModalWrapper";
 import MapBox from "./MapBox";
 
 const filters: string[] = ["Urban", "Nature", "Sea", "Others"];
+
 const Icons: any = {
   Urban: <BsBuilding />,
   Nature: <FaLeaf />,
@@ -40,6 +41,8 @@ const Visited = ({ data }: Props) => {
       setFilterTag(customFilter);
     }
   }, [customFilter]);
+
+  useEffect(() => {}, []);
 
   return (
     <div className={styles.container}>
@@ -74,7 +77,7 @@ const Visited = ({ data }: Props) => {
                       .filter((item) => item.type === filter)
                       .map((place, idx) => (
                         <ModalWrapper
-                        key={idx}
+                          key={idx}
                           component={
                             <MapBox
                               lat={place.lattitude}
