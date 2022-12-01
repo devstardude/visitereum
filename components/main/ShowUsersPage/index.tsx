@@ -7,6 +7,8 @@ import AllUsersContainer from "./AllUsersContainer";
 import styles from "./style.module.css";
 import { useEffect } from "react";
 import LoadingScreen from "../../shared/LoadingScreen";
+import PageTitle from "../../shared/PageTitle";
+import { RiUserStarFill } from "react-icons/ri";
 const ShowUsers = () => {
   // connect to contract
   const {
@@ -24,7 +26,7 @@ const ShowUsers = () => {
   useEffect(() => {}, [getUsers]);
   return (
     <div className={styles.container}>
-      <h3>Users</h3>
+      <PageTitle icon={<RiUserStarFill />} text="Users" />
       {isLoading && !getUsers && <LoadingScreen />}
       <div>{getUsers && <AllUsersContainer userAddresses={getUsers} />}</div>
     </div>

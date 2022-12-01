@@ -11,6 +11,8 @@ import {
   address as contractAddress,
 } from "../../../contract/abi/visitereum";
 import Router from "next/router";
+import PageTitle from "../../shared/PageTitle";
+import { MdLocationOn } from "react-icons/md";
 
 const AddPlacePage = () => {
   const [loadingScreen, setLoadingScreen] = useState(false);
@@ -58,7 +60,7 @@ const AddPlacePage = () => {
       ]);
       //loading off
       setLoadingScreen(false);
-      
+
       // redirect
       Router.push(`/profile/${wallet}`);
     }
@@ -72,7 +74,7 @@ const AddPlacePage = () => {
   return (
     <div className={styles.container}>
       {loadingScreen && <LoadingScreen />}
-      <h3>Add place</h3>
+      <PageTitle text="Add place" icon={<MdLocationOn />} />
       <AddPlaceForm placeData={placeDataSubmitHandler} />
     </div>
   );

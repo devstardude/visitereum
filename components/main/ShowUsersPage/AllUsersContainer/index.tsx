@@ -7,6 +7,7 @@ import {
 } from "../../../../contract/abi/visitereum";
 import { fetchJsonIpfs } from "../../../utils/fetchJsonIpfs";
 import UserCard from "../UserCard";
+import LoadingScreen from "../../../shared/LoadingScreen";
 
 interface AllUsersContainer {
   userAddresses: string[];
@@ -41,6 +42,7 @@ const AllUsersContainer = ({ userAddresses }: AllUsersContainer) => {
   }, [userAddresses, contract]);
   return (
     <div className={styles.container}>
+      {!userDid && <LoadingScreen />}
       {userDid &&
         userDid.map((did, idx) => (
           <UserCard key={idx} address={did.userAddress} did={did.userDid} />
