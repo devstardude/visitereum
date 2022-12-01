@@ -50,7 +50,7 @@ const Profile = () => {
         setDid(userDid);
       } catch (e) {
         console.log(e);
-        Router.push("/");
+        // Router.push("/");
       }
     };
     findDid();
