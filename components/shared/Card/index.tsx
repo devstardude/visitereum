@@ -5,6 +5,7 @@ import styles from "./style.module.css";
 interface Card {
   title: string;
   description: string;
+  image: string;
   children?: React.ReactNode;
 }
 const Card = ({ title, description, image, children }: Card) => {
