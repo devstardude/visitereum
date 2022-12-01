@@ -4,6 +4,11 @@ import Button from "../../../shared/Button";
 import Visited from "./Visited";
 import HallOfFame from "./HallOfFame";
 import { VisitedArray } from "./type";
+import { useContract, useContractRead } from "@thirdweb-dev/react";
+import {
+  vistereumABI,
+  address as contractAddress,
+} from "../../../../contract/abi/visitereum";
 
 const visitedPlaces: VisitedArray = [
   {
@@ -71,8 +76,27 @@ const visitedPlaces: VisitedArray = [
     type: "Otherss",
   },
 ];
-const ContentTab = () => {
+
+interface ContentTab {
+  address: string;
+}
+
+const ContentTab = ({ address }: ContentTab) => {
   const [tab, setTab] = useState<boolean>(true);
+
+  // connect to contract
+  const {
+    contract,
+    isLoading: stateLoading,
+    error: stateError,
+  } = useContract(contractAddress, vistereumABI);
+
+  const {
+    data: getUserPlaces,
+    isLoading,
+    error,
+  } = useContractRead(contract, "getUserPlaces", address);
+  console.log(getUserPlaces);
   return (
     <div className={styles.container}>
       <div className={styles.buttonContainer}>

@@ -27,6 +27,8 @@ const Navbar = () => {
 
   // context states
   const { userExist, setUserExist, setUserDid } = authContext;
+
+  // connect to contract
   const {
     contract,
     isLoading: stateLoading,

@@ -4,11 +4,13 @@ import styles from "./style.module.css";
 import { usePublicRecord } from "@self.id/framework";
 import { useEffect, useState } from "react";
 import { useViewerRecord } from "@self.id/framework";
+
 interface ProfilePage {
   did: string;
+  address: string;
 }
 
-const ProfilePage = ({ did }: ProfilePage) => {
+const ProfilePage = ({ did, address }: ProfilePage) => {
   const { content, isLoading, isError, error } = usePublicRecord(
     "basicProfile",
     did
@@ -17,7 +19,7 @@ const ProfilePage = ({ did }: ProfilePage) => {
   return (
     <div className={styles.container}>
       {content && <ProfileDetails profile={content} />}
-      {content && <ContentTab />}
+      {content && <ContentTab address={address} />}
     </div>
   );
 };

@@ -64,8 +64,13 @@ const Profile = () => {
       </Head>
 
       <div className="min-h-screen">
-        {!did && <LoadingScreen show={loadingScreen} />}
-        {did && <ProfilePage did={did} />}
+        {!did && <LoadingScreen />}
+        {did && address && (
+          <ProfilePage
+            address={typeof address === "string" ? address : address[0]}
+            did={did}
+          />
+        )}
       </div>
     </>
   );
