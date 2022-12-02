@@ -42,7 +42,6 @@ const Visited = ({ data }: Props) => {
     }
   }, [customFilter]);
 
-  useEffect(() => {}, []);
 
   return (
     <div className={styles.container}>
