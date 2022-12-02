@@ -28,8 +28,12 @@ const links: { title: string; link: string }[] = [
     link: "https://mumbai.polygonscan.com/address/0x6E06C606a7fBb153cFEdE1d934A2BE6C1E6658bE#code",
   },
   {
-    title: "NFT contract",
-    link: "",
+    title: "NFT collection on OpenSea",
+    link: "https://testnets.opensea.io/collection/visitereum",
+  },
+  {
+    title: "View my portfolio website and other projects",
+    link: "https://devstardude.vercel.app/",
   },
 ];
 
