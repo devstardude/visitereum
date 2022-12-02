@@ -16,12 +16,12 @@ const infoTexts: Array<infoTexts> = [
   },
   {
     head: "Decentralized Identity",
-    subHead: "Connect your DID with Ceramic",
+    subHead: "Connect your DID with Ceramic clay network",
     img: "https://icodrops.com/wp-content/uploads/2021/10/ceramicnetwork_logo.jpeg",
   },
   {
     head: "Saved in IPFS",
-    subHead: "Leverage the Decentralised storage",
+    subHead: "Leverage the Decentralised storage, Encypt and Store",
     img: "https://pbs.twimg.com/profile_images/1115618594350489601/k_57jhN2_400x400.png",
   },
   {
