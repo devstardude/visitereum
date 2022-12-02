@@ -42,13 +42,6 @@ const UserEditPage = () => {
     error: stateError,
   } = useContract(contractAddress, vistereumABI);
 
-  //add user to contract
-  const {
-    mutate: addUser,
-    isLoading: writeLoading,
-    error: writeError,
-  } = useContractWrite(contract, "addUser");
-
   // fetch did profile
   const fetchProfile = async () => {
     if (address) {
@@ -70,15 +63,23 @@ const UserEditPage = () => {
       const imageUrl = await storeImage(data.image, data.image.name);
       data.image = imageUrl;
     }
-    if (address) {
+    if (address && contract) {
       const profileDid = await writeProfile(address, data);
       if (userExist === false) {
-        const cid = await storeJsonIpfs(profileDid);
-        addUser([address, cid]);
-        setUserExist(true);
+        try {
+          const cid = await storeJsonIpfs(profileDid);
+          // add user to contract
+          await contract.call("addUser", address, cid);
+          Router.push(`/profile/${address}`);
+          setUserExist(true);
+        } catch (err) {
+          console.log(err);
+          setLoadingScreen(false);
+          alert("Something went wrong, Please try again.");
+          return;
+        }
       }
       setLoadingScreen(false);
-      Router.push(`/profile/${address}`);
     }
   };
 

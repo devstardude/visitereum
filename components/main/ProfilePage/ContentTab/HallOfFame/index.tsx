@@ -46,15 +46,26 @@ const HallOfFame = ({ urladdress }: HallOfFame) => {
 
   const mintNftToUser = async (id: string) => {
     if (contract && address) {
-      contract?.erc1155.claim(parseInt(id), 1);
-      const nft = await contract.get(id);
-      const nftObject = {
-        id: nft.metadata.id,
-        name: nft.metadata.name,
-        description: nft.metadata.description,
-        image: nft.metadata.image,
-      };
-      setUserNfts((prev) => [...(prev ?? []), nftObject]);
+      try {
+        await contract?.erc1155.claim(parseInt(id), 1);
+      } catch (err) {
+        console.log(err);
+        alert("Please try again");
+        return;
+      }
+      try {
+        const nft = await contract.get(id);
+        const nftObject = {
+          id: nft.metadata.id,
+          name: nft.metadata.name,
+          description: nft.metadata.description,
+          image: nft.metadata.image,
+        };
+        setUserNfts((prev) => [...(prev ?? []), nftObject]);
+      } catch (err) {
+        console.log(err);
+        alert("Something went wrong, please try again.");
+      }
     }
     if (!address) {
       alert("Please connect walllet");

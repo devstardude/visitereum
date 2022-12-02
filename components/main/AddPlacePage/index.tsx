@@ -27,13 +27,6 @@ const AddPlacePage = () => {
     error: stateError,
   } = useContract(contractAddress, vistereumABI);
 
-  //add user to contract
-  const {
-    mutate: addPlace,
-    isLoading: writeLoading,
-    error: writeError,
-  } = useContractWrite(contract, "addPlace");
-
   const placeDataSubmitHandler = async (placeData: placeDataWrite) => {
     if (wallet && placeData.image) {
       console.log(placeData);
@@ -49,15 +42,26 @@ const AddPlacePage = () => {
       // upload to blockchain
       const { id, address, description, lattitude, longitude, type } =
         placeData;
-      await addPlace([
-        id,
-        address,
-        description,
-        cidUrl,
-        lattitude,
-        longitude,
-        type,
-      ]);
+      if (contract) {
+        try {
+          await contract.call(
+            "addPlace",
+            id,
+            address,
+            description,
+            cidUrl,
+            lattitude,
+            longitude,
+            type
+          );
+        } catch (err) {
+          console.log(err);
+          alert("Something went wrong, Please try again");
+          setLoadingScreen(false);
+          return;
+        }
+      }
+
       //loading off
       setLoadingScreen(false);
 
