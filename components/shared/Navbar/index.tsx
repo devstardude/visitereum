@@ -121,10 +121,26 @@ const Navbar = () => {
                 onClick={() => setShow((prev) => !prev)}
                 className={styles.showMenu}
               >
-                <Link href="/">Home</Link>
-                <Link href="/users">Users</Link>
-                <Link href="/profile">Profile</Link>
-                <Link href="/about">About</Link>
+                {address &&
+                  loggedInLinks.map((link, idx) => (
+                    <Link
+                      key={idx}
+                      href={
+                        link?.altLink &&
+                        (userExist === false || userExist === null)
+                          ? link.altLink
+                          : link.link
+                      }
+                    >
+                      {link.title}
+                    </Link>
+                  ))}
+                {!address &&
+                  loggedOffLinks.map((link, idx) => (
+                    <Link key={idx} href={link.link}>
+                      {link.title}
+                    </Link>
+                  ))}
               </div>
             )}
           </div>
