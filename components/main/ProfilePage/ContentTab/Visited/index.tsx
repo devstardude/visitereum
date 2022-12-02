@@ -42,7 +42,6 @@ const Visited = ({ data }: Props) => {
     }
   }, [customFilter]);
 
-
   return (
     <div className={styles.container}>
       {data && (
@@ -85,6 +84,7 @@ const Visited = ({ data }: Props) => {
                           }
                         >
                           <Card
+                            fadeTest
                             key={idx}
                             title={place.address}
                             description={place.description}

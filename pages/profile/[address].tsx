@@ -67,7 +67,7 @@ const Profile = () => {
         {!did && <LoadingScreen />}
         {did && address && (
           <ProfilePage
-            address={typeof address === "string" ? address : address[0]}
+            urladdress={typeof address === "string" ? address : address[0]}
             did={did}
           />
         )}

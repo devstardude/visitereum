@@ -20,3 +20,35 @@
 .container p {
   @apply text-sm lg:text-base text-center;
 }
+
+.content {
+  @apply relative m-auto;
+}
+
+.content .contentOverlay {
+  @apply bg-[#00000074] absolute h-full w-full inset-0 opacity-0 rounded-lg;
+  -webkit-transition: all 0.4s ease-in-out 0s;
+  -moz-transition: all 0.4s ease-in-out 0s;
+  transition: all 0.4s ease-in-out 0s;
+}
+
+.content:hover .contentOverlay {
+  @apply opacity-[1];
+}
+
+.contentDetails {
+  @apply top-[80%] absolute text-center px-[1em] w-[100%] left-[50%] opacity-0;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -moz-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+.contentDetails p {
+  @apply text-[1.3rem] text-white;
+}
+
+.content:hover .contentDetails {
+  @apply top-[50%] left-[50%] opacity-[1];
+}

@@ -14,9 +14,9 @@ import { useAuth } from "../../../shared/context/AuthContext";
 const types: string[] = ["Urban", "Nature", "Sea", "Others"];
 
 interface ContentTab {
-  address: string;
+  urladdress: string;
 }
-const ContentTab = ({ address }: ContentTab) => {
+const ContentTab = ({ urladdress }: ContentTab) => {
   // context states
   const authContext = useAuth();
   const { setUserPlaceCount } = authContext;
@@ -34,7 +34,7 @@ const ContentTab = ({ address }: ContentTab) => {
     data: getUserPlaceIds,
     isLoading,
     error,
-  } = useContractRead(contract, "getUserPlaces", address);
+  } = useContractRead(contract, "getUserPlaces", urladdress);
 
   useEffect(() => {
     const getUserPlaces = async () => {
@@ -81,7 +81,11 @@ const ContentTab = ({ address }: ContentTab) => {
         </Button>
       </div>
       <div className={styles.contentContainer}>
-        {tab ? <Visited data={places} /> : <HallOfFame />}
+        {tab ? (
+          <Visited data={places} />
+        ) : (
+          <HallOfFame urladdress={urladdress} />
+        )}
       </div>
     </div>
   );

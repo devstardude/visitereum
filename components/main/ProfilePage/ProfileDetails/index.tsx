@@ -10,10 +10,13 @@ import { userData } from "../types";
 import { filePreviewLink } from "../../../utils/filePreviewLink";
 import Button from "../../../shared/Button";
 import Link from "next/link";
+import { useAddress } from "@thirdweb-dev/react";
 interface ProfileDetails {
   profile: userData;
+  urladdress: string;
 }
-const ProfileDetails = ({ profile }: ProfileDetails) => {
+const ProfileDetails = ({ profile, urladdress }: ProfileDetails) => {
+  const address = useAddress();
   const [profileData, setProfileData] = useState(profile);
   const { name, description, homeLocation, birthDate, image, gender } =
     profileData;
@@ -47,14 +50,16 @@ const ProfileDetails = ({ profile }: ProfileDetails) => {
             <p>{homeLocation}</p>
           </div>
         </div>
-        <div className={styles.addDetailsContainer}>
-          <Link href="/add">
-            <Button icon={<BiLocationPlus size={24} />}>Add place</Button>
-          </Link>
-          <Link href="/edit">
-            <Button icon={<AiOutlineEdit size={24} />}>Edit profile</Button>
-          </Link>
-        </div>
+        {address && urladdress === address && (
+          <div className={styles.addDetailsContainer}>
+            <Link href="/add">
+              <Button icon={<BiLocationPlus size={24} />}>Add place</Button>
+            </Link>
+            <Link href="/edit">
+              <Button icon={<AiOutlineEdit size={24} />}>Edit profile</Button>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

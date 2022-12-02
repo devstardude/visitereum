@@ -11,7 +11,6 @@ const UserCard = ({ did, address }: UserCard) => {
     "basicProfile",
     did
   );
-  console.log(content);
   return (
     <div>
       {content && (

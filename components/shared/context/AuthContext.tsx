@@ -45,7 +45,6 @@ export function AuthProvider({ children }: Props) {
     setDid(val);
   };
   const setUserPlaceCount = (val: userPlaceCount) => {
-    console.log(val);
     setPlaceCount(val);
   };
 

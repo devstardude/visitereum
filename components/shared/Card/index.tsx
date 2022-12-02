@@ -7,14 +7,16 @@ interface Card {
   description: string | undefined;
   image?: string;
   children?: React.ReactNode;
+  fadeTest?: boolean;
 }
-const Card = ({ title, description, image, children }: Card) => {
+const Card = ({ title, description, image, children, fadeTest }: Card) => {
   const img = image
     ? filePreviewLink(image)
     : "https://newsroompost.com/wp-content/uploads/2021/09/NFT.png";
   return (
     <div className={styles.container}>
-      <div className={styles.imageContainer}>
+      <div className={`${styles.imageContainer} ${styles.content}`}>
+        {fadeTest && <div className={styles.contentOverlay}></div>}
         <Image
           width={500}
           height={500}
@@ -22,6 +24,11 @@ const Card = ({ title, description, image, children }: Card) => {
           loader={() => img}
           alt="me.png"
         />
+        {fadeTest && (
+          <div className={styles.contentDetails}>
+            <p>View on map</p>
+          </div>
+        )}
       </div>
       <h4>{title}</h4>
       <p>{description}</p>

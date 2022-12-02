@@ -5,10 +5,10 @@ import { usePublicRecord } from "@self.id/framework";
 
 interface ProfilePage {
   did: string;
-  address: string;
+  urladdress: string;
 }
 
-const ProfilePage = ({ did, address }: ProfilePage) => {
+const ProfilePage = ({ did, urladdress }: ProfilePage) => {
   const { content, isLoading, isError, error } = usePublicRecord(
     "basicProfile",
     did
@@ -16,8 +16,8 @@ const ProfilePage = ({ did, address }: ProfilePage) => {
 
   return (
     <div className={styles.container}>
-      {content && <ProfileDetails profile={content} />}
-      {content && <ContentTab address={address} />}
+      {content && <ProfileDetails urladdress={urladdress} profile={content} />}
+      {content && <ContentTab urladdress={urladdress} />}
     </div>
   );
 };
