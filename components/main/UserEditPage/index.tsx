@@ -78,6 +78,8 @@ const UserEditPage = () => {
           alert("Something went wrong, Please try again.");
           return;
         }
+      } else {
+        Router.push(`/profile/${address}`);
       }
       setLoadingScreen(false);
     }
