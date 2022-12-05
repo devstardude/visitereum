@@ -40,13 +40,16 @@ const AllUsersContainer = ({ userAddresses }: AllUsersContainer) => {
     };
     getUsers();
   }, [userAddresses, contract]);
+  console.log(userDid);
   return (
     <div className={styles.container}>
-      {!userDid && <LoadingScreen />}
       {userDid &&
-        userDid.map((did, idx) => (
-          <UserCard key={idx} address={did.userAddress} did={did.userDid} />
-        ))}
+        [...userDid]
+          .reverse()
+          .map((did, idx) => (
+            <UserCard key={idx} address={did.userAddress} did={did.userDid} />
+          ))}
+      {!userDid && <LoadingScreen />}
     </div>
   );
 };
