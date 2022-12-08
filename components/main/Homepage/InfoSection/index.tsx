@@ -1,8 +1,9 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import styles from "./style.module.css";
 import { motion, Variants, useInView } from "framer-motion";
 import useScrollSpy from "react-use-scrollspy";
 import Image from "next/image";
+import { jakarta } from "../../../../Fonts";
 interface infoTexts {
   head: string;
   subHead: string;
@@ -62,7 +63,7 @@ const InfoTab = ({ head, subHead, img, show }: InfoTabs) => {
   return (
     <div className={styles.InfoTab}>
       <div className={show ? styles.headingActive : styles.headingsUnactive}>
-        <h2>{head}</h2>
+        <h2 className={jakarta.className}>{head}</h2>
         <h6>{subHead}</h6>
       </div>
       <motion.div

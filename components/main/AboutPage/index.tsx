@@ -1,4 +1,4 @@
-import { link } from "fs/promises";
+import { jakarta } from "../../../Fonts";
 import PageTitle from "../../shared/PageTitle";
 import styles from "./style.module.css";
 
@@ -41,7 +41,7 @@ const AboutPage = () => {
   return (
     <div className={styles.container}>
       <PageTitle text="About" />
-      <p>
+      <p className={jakarta.className}>
         <span>Visitereum</span> is a Web 3 version of{" "}
         <a
           target="_blank"
@@ -51,21 +51,21 @@ const AboutPage = () => {
         </a>
         &nbsp;which is a web 2 version project with similar features.
       </p>
-      <div className={styles.infoDiv}>
+      <div className={`${styles.infoDiv} ${jakarta.className}`}>
         <h4>Here are the features it offers</h4>
         {features.map((feature, idx) => (
           <p key={idx}>{feature}</p>
         ))}
       </div>
 
-      <div className={styles.infoDiv}>
+      <div className={`${styles.infoDiv} ${jakarta.className}`}>
         <h4>Visitereum is Built on</h4>
         {tech.map((t, idx) => (
           <p key={idx}>{t}</p>
         ))}
       </div>
 
-      <div className={styles.infoDiv}>
+      <div className={`${styles.infoDiv} ${jakarta.className}`}>
         <h4>Links</h4>
         {links.map((link) => (
           <p>

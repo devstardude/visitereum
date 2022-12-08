@@ -1,5 +1,5 @@
 import UserProfileDataSet from "../../shared/UserProfileDataSet";
-import { useAddress, useContract, useContractWrite } from "@thirdweb-dev/react";
+import { useAddress, useContract } from "@thirdweb-dev/react";
 import { userData } from "../ProfilePage/types";
 import styles from "./style.module.css";
 import { useEffect, useState } from "react";
@@ -16,6 +16,7 @@ import { useAuth } from "../../shared/context/AuthContext";
 import LoadingScreen from "../../shared/LoadingScreen";
 import { usePublicRecord } from "@self.id/framework";
 import Router from "next/router";
+import { jakarta } from "../../../Fonts";
 
 const UserEditPage = () => {
   const [loadingScreen, setLoadingScreen] = useState(false);
@@ -94,12 +95,12 @@ const UserEditPage = () => {
     <div className={styles.container}>
       {loadingScreen && <LoadingScreen />}
       {!userExist && (
-        <h3>
+        <h3 className={jakarta.className}>
           <span>Hey Traveller,</span> Looks like you're new here.
         </h3>
       )}
       {userExist && (
-        <h3>
+        <h3 className={jakarta.className}>
           <span>Edit profile,</span>
         </h3>
       )}

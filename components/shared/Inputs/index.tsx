@@ -1,6 +1,7 @@
 import { Field, ErrorMessage } from "formik";
 import SearchBox from "tomtom-react-searchbox";
 import Image from "next/image";
+import { jakarta } from "../../../Fonts";
 import styles from "./style.module.css";
 interface CustomInput {
   name: string;
@@ -41,11 +42,10 @@ export const CustomSelectInput = ({
   name,
   placeholder,
   disabled,
-  textarea,
 }: CustomInput) => {
   return (
     <div className={styles.container}>
-      <label className={styles.label} htmlFor={name}>
+      <label className={`${styles.label} ${jakarta.className}`} htmlFor={name}>
         {placeholder}
       </label>
       <Field

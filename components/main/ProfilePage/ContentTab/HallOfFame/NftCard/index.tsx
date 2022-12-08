@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { jakarta } from "../../../../../../Fonts";
 import styles from "./style.module.css";
 
 interface allNftArray {
@@ -29,7 +30,7 @@ const NftCard = ({ name, description, image, children, href }: allNftArray) => {
           </a>
         </div>
       </div>
-      <h4>{name}</h4>
+      <h4 className={jakarta.className}>{name}</h4>
       <p>{description}</p>
       {children}
     </div>

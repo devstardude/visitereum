@@ -11,6 +11,7 @@ import { filePreviewLink } from "../../../utils/filePreviewLink";
 import Button from "../../../shared/Button";
 import Link from "next/link";
 import { useAddress } from "@thirdweb-dev/react";
+import { jakarta } from "../../../../Fonts";
 interface ProfileDetails {
   profile: userData;
   urladdress: string;
@@ -34,7 +35,7 @@ const ProfileDetails = ({ profile, urladdress }: ProfileDetails) => {
         />
       </div>
       <div className={styles.details}>
-        <h1>{name}</h1>
+        <h1 className={jakarta.className}>{name}</h1>
         <p>{description}</p>
         <div className={styles.extraDetailsDiv}>
           <div className={styles.extraDetails}>

@@ -3,7 +3,6 @@
 }
 
 .container h3 {
-  font-family: "Plus Jakarta Sans", sans-serif;
   @apply flex justify-center items-center gap-4;
   @apply mt-0 mb-[1.5rem] lg:text-[2rem];
   @apply border border-[#9A53FF]/60 bg-[#9b53ff1a] rounded-full;

@@ -1,5 +1,3 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap"); */
-@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Handlee&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,7 +6,6 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Handlee", cursive;
   background-color: #10041c;
   color: rgb(227, 227, 227);
   -webkit-tap-highlight-color: transparent;
@@ -34,15 +31,6 @@ option {
 }
 .center {
   @apply flex items-center justify-center;
-}
-.text-1 {
-  font-family: "Handlee", cursive;
-}
-.text-2 {
-  font-family: "Great Vibes", cursive;
-}
-.text-3 {
-  font-family: "Plus Jakarta Sans";
 }
 
 /* / Map  */

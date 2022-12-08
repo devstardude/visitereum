@@ -3,7 +3,6 @@
 }
 
 .container p {
-  font-family: "Plus Jakarta Sans";
   @apply lg:text-[1.5rem];
   @apply tracking-wider leading-loose;
 }
@@ -16,11 +15,9 @@
 }
 
 .infoDiv h4 {
-  font-family: "Plus Jakarta Sans";
   @apply text-[1.5rem] underline underline-offset-8 pt-[2rem] text-[#9A53FF];
 }
 
 .infoDiv p {
-  font-family: "Plus Jakarta Sans";
   @apply text-[1rem];
 }

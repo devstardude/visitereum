@@ -3,7 +3,6 @@ import styles from "./style.module.css";
 import Button from "../../../shared/Button";
 import Visited from "./Visited";
 import HallOfFame from "./HallOfFame";
-import { VisitedArray } from "./type";
 import { useContract, useContractRead } from "@thirdweb-dev/react";
 import {
   vistereumABI,

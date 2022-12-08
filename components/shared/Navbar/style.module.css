@@ -24,18 +24,15 @@
   @apply flex items-center gap-7;
 }
 .navLinks :nth-child(1) {
-  font-family: "Great Vibes";
   @apply text-[1.9rem];
 }
 .navLinks a {
-  font-family: "Handlee", cursive;
 }
 .mobileContainer {
   @apply flex items-center justify-around lg:hidden;
   @apply w-full;
 }
 .mobileContainer p {
-  font-family: "Great Vibes", cursive;
   @apply text-[1.9rem];
 }
 

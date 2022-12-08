@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { jakarta } from "../../../Fonts";
 import { filePreviewLink } from "../../utils/filePreviewLink";
 import styles from "./style.module.css";
 
@@ -30,7 +31,7 @@ const Card = ({ title, description, image, children, fadeTest }: Card) => {
           </div>
         )}
       </div>
-      <h4>{title}</h4>
+      <h4 className={jakarta.className}>{title}</h4>
       <p>{description}</p>
       {children}
     </div>

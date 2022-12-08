@@ -13,7 +13,6 @@
 }
 
 .container h4 {
-  font-family: "Plus Jakarta Sans";
   @apply my-2 px-2;
   @apply text-center;
 }

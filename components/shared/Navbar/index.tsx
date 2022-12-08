@@ -19,6 +19,7 @@ import {
   vistereumABI,
 } from "../../../contract/abi/visitereum";
 import { loggedInLinks, loggedOffLinks } from "./links";
+import { greatVibes, handlee } from "../../../Fonts";
 
 const Navbar = () => {
   const address = useAddress();
@@ -72,10 +73,13 @@ const Navbar = () => {
         {/* Desktop  */}
         <div className={styles.desktopDiv}>
           <div className={styles.navLinks}>
-            <Link href="/">Visitéreum</Link>
+            <Link className={greatVibes.className} href="/">
+              Visitéreum
+            </Link>
             {address &&
               loggedInLinks.map((link, idx) => (
                 <Link
+                  className={handlee.className}
                   key={idx}
                   href={
                     link?.altLink && (userExist === false || userExist === null)
@@ -88,7 +92,7 @@ const Navbar = () => {
               ))}
             {!address &&
               loggedOffLinks.map((link, idx) => (
-                <Link key={idx} href={link.link}>
+                <Link className={handlee.className} key={idx} href={link.link}>
                   {link.title}
                 </Link>
               ))}
@@ -105,7 +109,7 @@ const Navbar = () => {
         </div>
         {/* Mobile */}
         <div className={styles.mobileContainer}>
-          <p>Visitéreum</p>
+          <p className={greatVibes.className}>Visitéreum</p>
           <div
             className={styles.mobileMenuButton}
             onClick={() => setShow((prev) => !prev)}
@@ -124,6 +128,7 @@ const Navbar = () => {
                 {address &&
                   loggedInLinks.map((link, idx) => (
                     <Link
+                      className={handlee.className}
                       key={idx}
                       href={
                         link?.altLink &&
@@ -137,7 +142,11 @@ const Navbar = () => {
                   ))}
                 {!address &&
                   loggedOffLinks.map((link, idx) => (
-                    <Link key={idx} href={link.link}>
+                    <Link
+                      className={handlee.className}
+                      key={idx}
+                      href={link.link}
+                    >
                       {link.title}
                     </Link>
                   ))}

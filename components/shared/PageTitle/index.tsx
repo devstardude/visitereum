@@ -1,4 +1,5 @@
 import styles from "./style.module.css";
+import { jakarta } from "../../../Fonts";
 interface PageTitle {
   text: string;
   icon?: React.ReactNode;
@@ -7,7 +8,7 @@ interface PageTitle {
 const PageTitle = ({ text, icon }: PageTitle) => {
   return (
     <div className={styles.container}>
-      <h3>
+      <h3 className={jakarta.className}>
         {icon}
         {text}
       </h3>

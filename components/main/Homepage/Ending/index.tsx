@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import { jakarta } from "../../../../Fonts";
 import styles from "./style.module.css";
 const Ending = () => {
   const animation = {
@@ -15,7 +16,7 @@ const Ending = () => {
         variants={animation}
         className={styles.container}
       >
-        <h2>Keep track of your adventures</h2>
+        <h2 className={jakarta.className}>Keep track of your adventures</h2>
         <h6>With Automatic place search, maps and so much more...</h6>
       </motion.div>
     </AnimatePresence>

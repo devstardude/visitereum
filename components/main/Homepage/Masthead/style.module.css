@@ -6,7 +6,6 @@
   @apply leading-tight;
 }
 .heading h6 {
-  font-family: "Great Vibes", cursive;
   @apply text-[5rem] lg:text-[7rem] 2xl:text-[8rem];
 }
 .heading p {

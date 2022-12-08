@@ -2,6 +2,7 @@ import Tour from "../../../assets/tour.json";
 import Lottie from "lottie-react";
 import styles from "./style.module.css";
 import { motion } from "framer-motion";
+import { greatVibes } from "../../../../Fonts";
 
 // Motion animation objects
 const heading = {
@@ -24,8 +25,9 @@ const Masthead = () => {
           initial={heading.initial}
           animate={heading.animate}
           transition={heading.transition}
+          className={greatVibes.className}
         >
-          Visitéreum
+          <span className={greatVibes.className}>Visitéreum</span>
         </motion.h6>
         <motion.p
           initial={subHeading.initial}

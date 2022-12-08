@@ -4,7 +4,6 @@
 
 .label {
   @apply block font-bold mb-2;
-  font-family: "Plus Jakarta Sans";
 }
 
 .field {

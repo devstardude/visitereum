@@ -16,9 +16,6 @@
 .dynamicCard img {
   @apply object-cover w-full h-full p-0 m-0;
 }
-.InfoTab h2 {
-  font-family: "Plus Jakarta Sans", sans-serif;
-}
 
 .headingActive h2 {
   @apply text-[#9A53FF];
