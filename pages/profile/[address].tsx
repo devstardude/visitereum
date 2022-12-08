@@ -7,13 +7,16 @@ import {
   vistereumABI,
   address as contractAddress,
 } from "../../contract/abi/visitereum";
-import ProfilePage from "../../components/main/ProfilePage";
 import LoadingScreen from "../../components/shared/LoadingScreen";
-import Router from "next/router";
 import { useAuth } from "../../components/shared/context/AuthContext";
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
+
+const ProfilePage = dynamic(() => import("../../components/main/ProfilePage"), {
+  suspense: true,
+});
 
 const Profile = () => {
-  const [loadingScreen, setLoadingScreen] = useState(false);
   const walletAddress = useAddress();
   const [did, setDid] = useState<string | null>(null);
   const router = useRouter();
@@ -66,10 +69,12 @@ const Profile = () => {
       <div className="min-h-screen">
         {!did && <LoadingScreen />}
         {did && address && (
-          <ProfilePage
-            urladdress={typeof address === "string" ? address : address[0]}
-            did={did}
-          />
+          <Suspense fallback={<LoadingScreen />}>
+            <ProfilePage
+              urladdress={typeof address === "string" ? address : address[0]}
+              did={did}
+            />
+          </Suspense>
         )}
       </div>
     </>

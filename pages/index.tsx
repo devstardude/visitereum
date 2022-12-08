@@ -1,5 +1,11 @@
+import dynamic from "next/dynamic";
+import { Suspense } from "react";
 import Head from "next/head";
-import Homepage from "../components/main/Homepage";
+import LoadingScreen from "../components/shared/LoadingScreen";
+
+const Homepage = dynamic(() => import("../components/main/Homepage"), {
+  suspense: true,
+});
 
 export default function Home() {
   return (
@@ -10,7 +16,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <Homepage />
+        <Suspense fallback={<LoadingScreen />}>
+          <Homepage />
+        </Suspense>
       </div>
     </div>
   );
