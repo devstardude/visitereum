@@ -17,7 +17,7 @@ const infoTexts: Array<infoTexts> = [
   {
     head: "Decentralized Identity",
     subHead: "Connect your DID with Ceramic clay network",
-    img: "/static/ceramic.jpg",
+    img: "/static/ceramic.jpeg",
   },
   {
     head: "Saved in IPFS",
@@ -32,7 +32,7 @@ const infoTexts: Array<infoTexts> = [
   {
     head: "Claim Merch and prizes",
     subHead: "Redeem Gifts and merch on your achievements",
-    img: "merch.jpg",
+    img: "/static/merch.jpg",
   },
 ];
 
