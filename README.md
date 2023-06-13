@@ -50,7 +50,10 @@ Track your visited places on Blockchain with Decentralised identity and so much 
   > https://testnets.opensea.io/collection/visitereum
 
 - Portfolio website
-  > https://visitereum.vercel.app/ 
+  > https://visitereum.vercel.app/
+
+- Youtube explaination
+  > https://www.youtube.com/watch?v=cGoyAaqmhsw
 
 ## 🚀Deployment
 
